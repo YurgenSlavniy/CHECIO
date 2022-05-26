@@ -1,5 +1,9 @@
-# MISSION 1. Multiply (Intro) >< 
+# ___________________________________________________________________________________
+# MISSION 1. 
+# Multiply (Intro) >< 
 # Into mission. How to solve missions on CheckiO? 
+# Elementary <>
+# ___________________________________________________________________________________
 
 # Elementary
 # EN PL ES FR JA Russian SV
@@ -13,10 +17,9 @@
 # НАПИШИТЕ ФУНКЦИЮ, которая будет получать 2 числа и возвращать результат произведения этих чисел.
 
 # Входные данные: Два аргумента. Оба int
-
 # Выходные данные: Int.
 
-#  Пример:
+# Пример:
 
 #  mult_two(2, 3) == 6
 # mult_two(1, 0) == 0
@@ -74,7 +77,7 @@ if __name__ == "__main__":
     assert mult_two(1, 0) == 0
     print("Coding complete? Click 'Check' to earn cool rewards!")
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+# ___________________________________________________________________________________
 # SOLUTION 1. <>
 def mult_two(a, b):
     return a * b
@@ -114,7 +117,66 @@ if __name__ == '__main__':
 # <><><><><> Best "Scary" Solution <><><><><>
 def mult_two(a, b):
     return multiply_of_a_and_b  
-  
+
+# ___________________________________________________________________________________
+# MISSION 2. 
+# Length of the String ><   
+# Sum two passed ints
+# Elementary <> 
+# ___________________________________________________________________________________
+
+# Elementary
+# English
+
+# The mission is in Collecting Mode. In order to see solutions of other users, you should share your own solutions first.
+# НАПИШИТЕ ФУНКЦИЮ, Your function should return the length of the given string
+
+# Input: String.
+# Output: Int.
+
+# Example:
+
+# assert string_length("hi") == 2
+# assert string_length("CheckiO") == 7
+# assert string_length("") == 0
+# ___________________________________________________________________________________
+# SOLUTION 2. <>
+def string_length(text: str) -> int:
+    if text != '':
+        string = len(text)
+    else:
+        string = 0
+      
+    return string
+
+print("Example:")
+print(string_length("Hi"))
+
+assert string_length("hi") == 2
+assert string_length("CheckiO") == 7
+assert string_length("") == 0
+
+# <><><><><> Best "Clear" Solution <><><><><>
+def string_length(text: str) -> int:
+    return len(text)
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def string_length(text: str) -> int:
+    return int(len(text))
+
+# ___________________________________________________________________________________
+# MISSION 2. 
+# Length of the String ><   
+# Sum two passed ints
+# Elementary <> 
+# ___________________________________________________________________________________
+
+
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
   
 
 
