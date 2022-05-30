@@ -286,7 +286,7 @@ def first_word(text: str) -> str:
     return text[:i]
 
 # <><><><><> Best "Creative" Solution <><><><><>
-return s.split[0
+return s.split[0]
 
 # ___________________________________________________________________________________
 # MISSION 5. 
