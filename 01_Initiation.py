@@ -1063,11 +1063,88 @@ def best_stock(data):
 
 # ___________________________________________________________________________________
 # SOLUTION 15. <>
+def nearest_value(values: set, one: int) -> int:
+    values = list(values)
+    if one in values:
+        return one
+    else:
+        values.append(one)
+        values.sort()
+        ind = values.index(one)
+        if ind == 0:
+            return values[1]
+        elif ind == len(values) - 1:
+            return values[-2]
+        else:
+            prev = values[ind - 1]
+            next = values[ind + 1]
+            d_prev = one - prev
+            d_next = next - one
+            if d_next == d_prev:
+                return prev
+            elif d_prev < d_next:
+                return prev
+            else:
+                return next
+               
+# <><><><><> Best "Clear" Solution <><><><><>    
+def nearest_value(values: set, one: int) -> int:
+    return min(values, key=lambda n: (abs(one - n), n))
+
+# <><><><><> Best "Creative" Solution <><><><><> 
+def nearest_value(values: set, one: int) -> int:   
+    return min(sorted(values), key = lambda i: abs(i - one)) 
+
+# <><><><><> Best "Speedy" Solution <><><><><> 
+from functools import cmp_to_key
+def nearest_value(values: set, one: int) -> int:    
+    return sorted(values, key = cmp_to_key(lambda a,b: abs(a - one) - abs(b - one) or (a-b)))[0]
+
+# <><><><><> Best "3rd party" Solution <><><><><> 
+import numpy as np
+
+def nearest_value(values: set, one: int) -> int:
+    value_list = np.array(list(values))
+    value_list.sort()
+    index = abs(value_list - one).argmin()
+    return value_list[index]
+
+# <><><><><> Uncategorized <><><><><> 
+def nearest_value(values: set, one: int) -> int:
+    if one in values:
+        return one
+    x=list(values)
+    x.append(one)
+    x.sort()
+    index=x.index(one)
+    if one==(x[0]):
+        return x[index+1]
+    elif one==(x[-1]):
+        return x[index-1]        
+    elif (x[index]-x[index-1]) < (x[index+1]-x[index]):
+        return x[index-1]
+    elif (x[index]-x[index-1]) > (x[index+1]-x[index]):
+        return x[index+1]
+    elif x[index-1] < x[index+1]:
+        return x[index-1]
+    elif x[index-1] > x[index+1]:
+        return x[index+1]
+
+# ___________________________________________________________________________________
+# MISSION 16. 
+#  ><   
+#  ?
+# Elementary <> 
+# --
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
+# SOLUTION 16. <>
 
                
 # <><><><><>  <><><><><>               
                
 # ___________________________________________________________________________________
+
 
 # ___________________________________________________________________________________
 
@@ -1080,14 +1157,14 @@ def best_stock(data):
 # ___________________________________________________________________________________
 # ___________________________________________________________________________________
 # ___________________________________________________________________________________
-# MISSION 16. 
+# MISSION 17. 
 #  ><   
 #  ?
 # Elementary <> 
 # --
 # ___________________________________________________________________________________
 # ___________________________________________________________________________________
-# SOLUTION 16. <>
+# SOLUTION 17. <>
 
                
 # <><><><><>  <><><><><>               
