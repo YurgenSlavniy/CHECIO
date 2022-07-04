@@ -3,6 +3,7 @@
 # Multiply (Intro) >< 
 # Into mission. How to solve missions on CheckiO? 
 # Elementary <>
+# Numbers --
 # ___________________________________________________________________________________
 
 # Elementary
@@ -122,8 +123,9 @@ def mult_two(a, b):
 # Length of the String ><   
 # Sum two passed ints
 # Elementary <> 
+# String --
 # ___________________________________________________________________________________
-
+ 
 # Elementary
 # English
 
@@ -167,6 +169,7 @@ def string_length(text: str) -> int:
 # Number Length ><   
 # How many digits are in the given positive number?
 # Elementary <> 
+# String numbers --
 # ___________________________________________________________________________________
 
 # Elementary
@@ -226,6 +229,7 @@ def number_length(a: int) -> int:
 # First Word (simplified) ><   
 # Find the first word in a string?
 # Elementary <> 
+# String --
 # ___________________________________________________________________________________
 
 #  Elementary
@@ -289,6 +293,7 @@ return s.split[0]
 # End Zeros ><   
 # How many zeros are at the end?
 # Elementary <> 
+# String --
 # ___________________________________________________________________________________
 # Elementary
 # EN JA PL Russian
@@ -369,6 +374,7 @@ def end_zeros(b):
 # Backward String ><   
 # Reverse a string ?
 # Elementary <> 
+# String --
 # ___________________________________________________________________________________
 # Elementary
 # RU JA PL English
@@ -425,6 +431,7 @@ def backward_string(val: str) -> str:
 # Fizz Buzz ><   
 # A word game used to the teach robots about division?
 # Elementary <> 
+# String numbers has-Hints Bool --
 # ___________________________________________________________________________________
 # Elementary
 # ES JA ZH-CN ZH-HANS EN EL FA HU IT PL Russian UK CS DE FR PT-BR
@@ -527,6 +534,7 @@ def checkio(number):
 # Replace First ><   
 # The first element should become the last one ?
 # Elementary <> 
+# Array numbers --
 # ___________________________________________________________________________________
 # Elementary
 # JA RY EN PL Russian
@@ -601,6 +609,7 @@ def replace_first(items: list) -> Iterable:
 # Max Digit ><   
 # Which digit is the bigges?
 # Elementary <> 
+# String numbers --
 # ___________________________________________________________________________________
 # Elementary
 # EN PL Russian
@@ -669,7 +678,8 @@ def max_digit(number: int) -> int:
 # Beginning Zeros ><   
 # How many zero digits ("0") are at the beginning of the given string ?
 # Elementary+ <> 
-# ___________________________________________________________________________________
+# String --
+# _________ __________________________________________________________________________
 # Elementary+
 # Russian EN PL
 
@@ -751,6 +761,7 @@ def beginning_zeros(number: str) -> int:
 # Index Power ><   
 # What is the power hidden within indexes?
 # Elementary <> 
+# List numbers has-Hints --
 # ___________________________________________________________________________________
 # Elementary
 # CS ES FR IT PL EN DE EL FA JA PT-BR Russian UK
@@ -825,6 +836,7 @@ def index_power(ra, n):
 # Between Markers (simplified) ><   
 # find a substring between markers ?
 # Elementary <> 
+# String --
 # ___________________________________________________________________________________
 # Elementary
 # EN PL Russian
@@ -883,6 +895,7 @@ def between_markers(text: str, begin: str, end: str) -> str:
 # Correct Sentence ><   
 # Sentences should always begin with a capital letter and end with a dot?
 # Elementary <> 
+# String text has-Hints --
 # ___________________________________________________________________________________
 # Elementary
 # PL JA Russian EN FR
@@ -964,6 +977,7 @@ def correct_sentence(text: str) -> str:
 # Best Stock ><   
 # Find the nearest value to the given one?
 # Elementary+ <> 
+# Math has-Hints --
 # ___________________________________________________________________________________
 # Elementary+
 # EN JA Russian
@@ -1019,10 +1033,34 @@ def best_stock(data):
                
 # ___________________________________________________________________________________
 # MISSION 15. 
-#  ><   
-#  ?
-# Elementary <> 
+# Nearest Value ><   
+# Find the nearest value to the given one. ?
+# Elementary+ <> 
+# Set Array --
 # ___________________________________________________________________________________
+# Elementary+
+# PL EN JA Russian
+
+# Найдите ближайшее значение к переданному.
+# Вам даны список значений в виде множества (Set) и значение, относительно которого, надо найти ближайшее.
+
+# Например, мы имеем следующий ряд чисел: 4, 7, 10, 11, 12, 17. И нам нужно найти ближайшее значение к цифре 9. Если отсортировать этот ряд по возрастанию, то слева от 9 будет 7, а справа 10. Но 10 - находится ближе, чем 7, значит правильный ответ 10.
+
+# Несколько уточнений:
+
+# - Если 2 числа находятся на одинаковом расстоянии - необходимо выбрать наименьшее из них;
+# - Ряд чисел всегда не пустой, т.е. размер >= 1;
+# - Переданное значение может быть в этом ряде, а значит оно и является ответом;
+# - В ряде могут быть как положительные, так и отрицательные числа, но они всегда целые;
+# - Ряд не отсортирован и состоит из уникальных чисел.
+
+# Входные данные: Два аргумента. Ряд значений в виде set. Искомое значение - int
+# Выходные данные: Int.
+
+# Пример:
+# nearest_value({4, 7, 10, 11, 12, 17}, 9) == 10
+# nearest_value({4, 7, 10, 11, 12, 17}, 8) == 7
+
 # ___________________________________________________________________________________
 # SOLUTION 15. <>
 
@@ -1046,6 +1084,7 @@ def best_stock(data):
 #  ><   
 #  ?
 # Elementary <> 
+# --
 # ___________________________________________________________________________________
 # ___________________________________________________________________________________
 # SOLUTION 16. <>
