@@ -355,10 +355,26 @@ if __name__ == '__main__':
     assert checkio([6]) == 36, "(6)*6=36"
     assert checkio([]) == 0, "An empty array = 0"
     
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def checkio(array):
+    if len(array) == 0: return 0
+    return sum(array[0::2]) * array[-1]
+
+# <><><><><> Best "Creative" Solution <><><><><>
+checkio = lambda array: sum(array[::2]) * sum(array[-1:])
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def checkio(array):
+    return sum(array[0::2])*array[-1] if 0 < len(array) else 0
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+def checkio(array):
+    from numpy import sum
+    if len(array) > 0:
+        return int(sum(array[::2])*array[-1])
+    else:    
+        return 0
+    
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
