@@ -427,10 +427,41 @@ assert left_join(("bright aright", "ok")) == "bleft aleft,ok"
 assert left_join(("brightness wright",)) == "bleftness wleft"
 assert left_join(("enough", "jokes")) == "enough,jokes"
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def left_join(phrases):
+    return (",".join(phrases)).replace("right","left")
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def left_join(phrases):
+    return ','.join(map(lambda x:x.replace('right','left'),phrases))
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def left_join(phrases):
+    return ",".join(phrases).replace("right", "left")
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+class right_to_left():
+    def __init__(self, phrases):
+        self.phrases = phrases
+
+    def perform(self):
+        replaced_words_array = np.array([p.replace('right', 'left') for p in self.phrases])
+        replaced_words_list = replaced_words_array.tolist()
+        return ",".join(replaced_words_list)
+
+def left_join(phrases: tuple) -> str:
+    foo = right_to_left(phrases)
+    return foo.perform()
+
+# <><><><><> "Creative" Solution <><><><><>
+def left_join(phrases):
+    a=""
+    for i in phrases:
+        a=a+","+i
+    a=a[1:].replace("right", "left")
+    return a
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
