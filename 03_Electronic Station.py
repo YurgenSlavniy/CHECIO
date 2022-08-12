@@ -40,10 +40,21 @@ if __name__ == '__main__':
     assert is_acceptable_password('muchlonger') == True
     assert is_acceptable_password('ashort') == False
     
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return len(password) > 6
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return bool(password[7::])
+
+# <><><><><> Clear solution <><><><><>
+is_acceptable_password = lambda password: len(password) > 6
+
+# <><><><><> Uncategorized solution <><><><><>
+def is_acceptable_password(password: str) -> bool: 
+    return True if len(password) > 6 else False 
+
 # ___________________________________________________________________________________
     
 # ___________________________________________________________________________________
