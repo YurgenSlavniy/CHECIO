@@ -489,7 +489,36 @@ def left_join(phrases):
 # Предусловие: Строка состоит только из символов алфавита и пробелов
 # ___________________________________________________________________________________
 # SOLUTION 7. <>
+def backward_string_by_word(text: str) -> str:
+    i = 0
+    result = []
+    for j in range(len(text)):
+        if text[j] == ' ': 
+            word = text[i:j]
+            result.append(word[::-1])
+            result.append(' ')
+            i = j+1
+        elif j == len(text)-1:
+            word = text[i:j+1]
+            result.append(word[::-1])
+        else:
+            continue
+    result = ''.join(result)
+    return result
 
+
+print("Example:")
+print(backward_string_by_word(""))
+
+assert backward_string_by_word("") == ""
+assert backward_string_by_word("world") == "dlrow"
+assert backward_string_by_word("hello world") == "olleh dlrow"
+assert backward_string_by_word("hello   world") == "olleh   dlrow"
+assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
+
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
 
@@ -503,6 +532,20 @@ def left_join(phrases):
 
 # ___________________________________________________________________________________
 # SOLUTION 8. <>
+
+# <><><><><>  <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 9. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 9. <>
 
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
