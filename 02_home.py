@@ -506,7 +506,6 @@ def backward_string_by_word(text: str) -> str:
     result = ''.join(result)
     return result
 
-
 print("Example:")
 print(backward_string_by_word(""))
 
@@ -516,21 +515,56 @@ assert backward_string_by_word("hello world") == "olleh dlrow"
 assert backward_string_by_word("hello   world") == "olleh   dlrow"
 assert backward_string_by_word("welcome to a game") == "emoclew ot a emag"
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def backward_string_by_word(text):
+    return ' '.join(word[::-1] for word in text.split(' '))
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def backward_string_by_word(text: str) -> str:
+  return ' '.join(map(lambda x: x[::-1], text.split(' ')))
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def backward_string_by_word(text: str) -> str:
+    return ' '.join([i[::-1] for i in text.split(' ')])
+
+# <><><><><> Uncategorized <><><><><>
+import re
+
+def backward_string(match_object) -> str:
+    return match_object.group(0)[::-1]
+
+def backward_string_by_word(text: str) -> str:
+    return re.sub(r"\w+", backward_string, text)
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 8. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Non Empty Lines >< 
+# How many non-empty lines a given text has? 
+# Elementary <>
+# String text multiline --
+# ___________________________________________________________________________________
+# Elementary
+# English UK
+
+# You need to count how many non-empty lines a given text has.
+# An empty line is a line without symbols or the one that contains only spaces.
+
+# Input: A text.
+# Output: An int.
+
+# Example:
+# assert non_empty_lines("one simple line\n") == 1
+# assert non_empty_lines("") == 0
+# assert non_empty_lines("\nonly one line\n            ") == 1
+# assert ( non_empty_lines(
+#        "\nLorem ipsum dolor sit amet,\n\nconsectetur adipiscing elit\nNam odio nisi, aliquam\n            "
+#    )
+#    == 3
+# )
 # ___________________________________________________________________________________
 
-# ___________________________________________________________________________________
 # SOLUTION 8. <>
 
 # <><><><><>  <><><><><>
