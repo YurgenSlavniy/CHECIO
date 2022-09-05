@@ -566,7 +566,31 @@ def backward_string_by_word(text: str) -> str:
 # ___________________________________________________________________________________
 
 # SOLUTION 8. <>
+def non_empty_lines(text: str) -> int:
+    lines = text.splitlines()
+    while '' in lines:
+        lines.remove('')
+    count = 0
+    for i in lines:
+        if i.isspace():
+            count += 1
+    return len(lines) - count
 
+print("Example:")
+print(non_empty_lines("one simple line\n"))
+
+assert non_empty_lines("one simple line\n") == 1
+assert non_empty_lines("") == 0
+assert non_empty_lines("\nonly one line\n            ") == 1
+assert (
+    non_empty_lines(
+        "\nLorem ipsum dolor sit amet,\n\nconsectetur adipiscing elit\nNam odio nisi, aliquam\n            "
+    )
+    == 3
+)
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
 
