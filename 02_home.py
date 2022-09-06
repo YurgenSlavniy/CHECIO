@@ -588,14 +588,63 @@ assert (
     )
     == 3
 )
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+def non_empty_lines(text: str) -> int:
+    return 0 if not text else len(list(filter(None, map(lambda i: i.strip(),
+        __import__('re').split('\n', text)))))
+
+# <><><><><> Best "Clear" Solution <><><><><>
+def non_empty_lines(text: str) -> int:
+    return sum(bool(line.strip()) for line in text.splitlines())
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def non_empty_lines(text: str) -> int:
+    return len([x for x in text.split('\n') if any(i.isalha() for i in x)])
+
+# <><><><><> Uncategorized <><><><><>
+def non_empty_lines(text: str) -> int:
+    if len(text) == 0:
+        return 0
+    line_list = text.split('\n')
+    counter = 0
+    for each in line_list:
+        if len(each.strip()) > 0:
+            counter += 1
+    return counter
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 9. 
+# Ascending List >< 
+# The sequence of elements items is ascending ? 
+# Elementary+ <>
+# ListBool --
+# ___________________________________________________________________________________
+# Elementary+
+# English UK
+
+# Determine whether the list of elements is ascending such that each of its elements is strictly 
+# larger than (and not merely equal to) the preceding element. Empty list consider as ascending.
+
+# Input: List with ints.
+# Output: Bool.
+
+# Example:
+# assert is_ascending([-5, 10, 99, 123456]) == True
+# assert is_ascending([99]) == True
+# assert is_ascending([4, 5, 6, 7, 3, 7, 9]) == False
+# assert is_ascending([]) == True
+
+# The mission was taken from Python CCPS 109 Fall 2018. It is taught for Ryerson Chang School of Continuing Education by Ilkka Kokkarinen
+# ___________________________________________________________________________________
+# SOLUTION 9. <>
+
+# <><><><><>  <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 10. 
 #  >< 
 #  ? 
 #  <>
@@ -603,7 +652,7 @@ assert (
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 9. <>
+# SOLUTION 10. <>
 
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
