@@ -639,7 +639,29 @@ def non_empty_lines(text: str) -> int:
 # The mission was taken from Python CCPS 109 Fall 2018. It is taught for Ryerson Chang School of Continuing Education by Ilkka Kokkarinen
 # ___________________________________________________________________________________
 # SOLUTION 9. <>
+def is_ascending(items: list[int]) -> bool:
+    for index, item in enumerate(items):
+        try:
+            if items[index+1] > item:
+                continue
+            else:
+                return False
+        except IndexError:
+            break
+    return True
+    
+print("Example:")
+print(is_ascending([-5, 10, 99, 123456]))
 
+assert is_ascending([-5, 10, 99, 123456]) == True
+assert is_ascending([99]) == True
+assert is_ascending([4, 5, 6, 7, 3, 7, 9]) == False
+assert is_ascending([]) == True
+assert is_ascending([1, 1, 1, 1]) == False
+
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
 
@@ -653,6 +675,20 @@ def non_empty_lines(text: str) -> int:
 
 # ___________________________________________________________________________________
 # SOLUTION 10. <>
+
+# <><><><><>  <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 11. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 11. <>
 
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
