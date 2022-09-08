@@ -659,20 +659,60 @@ assert is_ascending([4, 5, 6, 7, 3, 7, 9]) == False
 assert is_ascending([]) == True
 assert is_ascending([1, 1, 1, 1]) == False
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+from typing import Iterable
+
+def is_ascending(items: Iterable[int]) -> bool:
+    return all(items[i] < items[i+1] for i in range(len(items)-1))
+
+# <><><><><> Best "Creative" Solution <><><><><>
+is_ascending = lambda l: all(map(int.__lt__, l, l[1:]))
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def is_ascending(items):
+    return all(items[i] < items[i+1] for i in range(len(items) - 1))
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+from typing import Iterable
+def is_ascending(items: Iterable[int]) -> bool:
+    try:
+        return np.prod(np.gradient(items)>0)
+    except ValueError:
+        return True
+
+# <><><><><> Uncategorized  <><><><><>
+from typing import Iterable
+def is_ascending(items: Iterable[int]) -> bool:
+    return sorted(list(set(items))) == items
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 10. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Shorter Set >< 
+# Remove elements from set from both sides ? 
+# Elementary <>
+# Set --
 # ___________________________________________________________________________________
+# Elementary
+# English UK
 
+# In a given set of integers, you need to remove minimum and maximum elements.
+# The second argument tells how many min and max elements should be removed.
+
+# Input: Two arguments. Set of ints and int.
+# Output: Set of ints
+
+# Example:
+# assert remove_min_max({8, 9, 18, 7}, 1) == {8, 9}
+# assert remove_min_max({8, 9, 7}, 0) == {8, 9, 7}
+# assert remove_min_max({8, 9, 7}, 2) == set()
+# assert remove_min_max({1, 2, 7, 8, 9}, 2) == {7}
+
+# How it’s used: (math is used everywhere)
+# Precondition: ints in the set is between -1000 and 1000; the second argument is between -1000 and 1000
 # ___________________________________________________________________________________
 # SOLUTION 10. <>
 
