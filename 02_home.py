@@ -729,25 +729,112 @@ assert remove_min_max({8, 9, 7}, 2) == set()
 assert remove_min_max({1, 2, 7, 8, 9}, 2) == {7}
 assert remove_min_max(set(), 1) == set()
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def remove_min_max(data: set, total:int) -> set:
+    if total:
+        return set(sorted(data)[total:-total])
+    return data
+
+# <><><><><> Best "Creative" Solution <><><><><>
+remove_min_max=lambda d,t:set([*sorted(d),0][t:-1-t])
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def remove_min_max(data: set, total:int) -> set:
+    
+    # the next 4 functions are taken from median
+    def swap(i, j):
+        data[i], data[j] = data[j], data[i]
+
+    def reorder(i, j):
+        if data[j] < data[i]:
+            swap(i, j)
+
+    def partition_mo3_3way(left, right):
+        mid = (left + right) // 2
+        reorder(left, mid)
+        reorder(left, right)
+        reorder(right, mid)
+        pivot = data[right]
+
+        i, j, p = left, left, right
+        while i < p:
+            if data[i] < pivot:
+                swap(i, j)
+                i += 1
+                j += 1
+            elif data[i] == pivot:
+                p -= 1
+                swap(i, p)
+            else:
+                i += 1
+
+        l = min(p - j, right - p + 1)
+        swap(slice(j, j + l), slice(right - l + 1, right + 1))
+        return j, j + right - p
+
+    def quickselect(k, left=0, right=len(data) - 1):
+        while True:
+            if left == right:
+                return data[left]
+            pivot_l, pivot_r = partition_mo3_3way(left, right)
+            if pivot_l <= k <= pivot_r:
+                return data[k]
+            elif k < pivot_l:
+                right = pivot_l - 1
+            else:
+                left = pivot_r + 1
+
+    if len(data) - 2*total <= 0:
+        return set()
+    else:
+        data = list(data)
+        start, stop = total, len(data) - total
+        quickselect(start)
+        quickselect(stop, left=start+1)
+        return set(data[start:stop])
+    
+# <><><><><> Clear solution <><><><><>
+def remove_min_max(data: set, total:int) -> set:
+
+    sorted_data = sorted(data)
+    min_data = set(sorted_data[:total])
+    max_data = set(sorted_data[len(data)-total:])
+    return data - min_data - max_data
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 11. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Sum by Type >< 
+# Values should be summed differently for different types? 
+# Elementary+ <>
+# List string iter Array Int --
 # ___________________________________________________________________________________
+# Elementary+
+# English UK
+
+# You have a list. Each value from that list can be either a string or an integer.
+# Your task here is to return two values. The first one is a concatenation of all strings from the given list.
+# The second one is a sum of all integers from the given list.
+
+# Input: A list of strings and integers.
+# Output: A list or tuple.
+
+# Examples:
+# assert list(sum_by_types([])) == ["", 0]
+# assert list(sum_by_types([1, 2, 3])) == ["", 6]
+# assert list(sum_by_types(["1", 2, 3])) == ["1", 5]
+# assert list(sum_by_types(["1", "2", 3])) == ["12", 3]
+
+# How it’s used: Input the values of different types and different operations with them,
+# depending of type, is the usual thing in development.
 
 # ___________________________________________________________________________________
 # SOLUTION 11. <>
 
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
+
 # ___________________________________________________________________________________
 # MISSION 12. 
 #  >< 
