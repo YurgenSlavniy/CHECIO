@@ -853,16 +853,72 @@ assert list(sum_by_types(["1", "2", 3])) == ["12", 3]
 assert list(sum_by_types(["1", "2", "3"])) == ["123", 0]
 assert list(sum_by_types(["size", 12, "in", 45, 0])) == ["sizein", 57]
 
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def sum_by_types(items):
+    result = ['', 0]
+    for item in items:
+        result[isinstance(item, int)] += item
+    return result
+
+# <><><><><> Best "Creative" Solution <><><><><>
+import collections, operator
+class Neutral(dict): __missing__ = staticmethod(lambda T: T())
+report = operator.itemgetter(str, int)
+
+def sum_by_types(a: list) -> report:
+    accum = Neutral()
+    for elem in a: accum[type(elem)] += elem
+    return report(accum)
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+from typing import List, Tuple
+
+def sum_by_types(items: List) -> Tuple[str, int]:
+    result = ['', 0]
+    for item in items:
+        result[type(item)==int] += item
+    return tuple(result)
+
+# <><><><><> Uncategorized  <><><><><>
+def sum_by_types(items):
+    str_conc = ''
+    int_sum = 0
+    for i in items:
+        if type(i) == str:
+            str_conc = str_conc + i
+        else:
+            int_sum = int_sum + i       
+    return [str_conc, int_sum]
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 12. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Sum Numbers >< 
+# Просуммируйте числа ? 
+# Elementary <>
+# Russian string numbers --
 # ___________________________________________________________________________________
+# Elementary
+# EN PL Russian UK
+
+# Вам дан текст в котором нужно просуммировать числа, но только разделенные пробелом. 
+# Если число является частью слова, то его суммировать не нужно.
+
+# Текст состоит из чисел, пробелов и букв английского алфавита.
+# Входные данные: Строка.
+# Выходные данные: Целое число.
+
+# Пример:
+# assert sum_numbers("hi") == 0
+# assert sum_numbers("who is 1st here") == 0
+# assert sum_numbers("my numbers is 2") == 2
+# assert (
+#    sum_numbers(
+#        "This picture is an oil on canvas painting by Danish artist Anna Petersen between 1845 and 1910 year"
+#    )
+#    == 3755
+#)
 
 # ___________________________________________________________________________________
 # SOLUTION 12. <>
@@ -870,3 +926,16 @@ assert list(sum_by_types(["size", 12, "in", 45, 0])) == ["sizein", 57]
 # <><><><><>  <><><><><>
 # ___________________________________________________________________________________
 
+# ___________________________________________________________________________________
+# MISSION 13. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 13. <>
+
+# <><><><><>  <><><><><>
+# ___________________________________________________________________________________
