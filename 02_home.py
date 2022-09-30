@@ -945,20 +945,60 @@ assert (
 assert sum_numbers("5 plus 6 is") == 11
 assert sum_numbers("") == 0
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+sum_numbers = lambda text: sum(int(word) for word in text.split() if word.isdigit())
+
+# <><><><><> Best "Creative" Solution <><><><><>
+sum_numbers=lambda t,r=__import__("re").compile(r'\b\d+\b'):sum(map(int,r.findall(t)))
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def sum_numbers(text: str) -> int:
+    return sum(map(int, filter(str.isdigit, text.split())))
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+def sum_numbers(text: str) -> int:
+    import numpy as np
+    l = text.split(' ')
+    n = np.array([])
+    for i in l:
+        try:
+            n = np.append(n,int(i))
+        except:
+            p = 0            
+    return (int(n.sum()))
+
+# <><><><><> Uncategorized  <><><><><>
+import re
+def sum_numbers(text: str) -> int:
+    nums = re.findall(r"\b\d+\b", text)
+    return sum(list(map(int, nums)))
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
 # MISSION 13. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Easy Unpack >< 
+# Верните первый, третий и второй с конца элемент из заданого массива ? 
+# Elementary <>
+# Russian math numbers has-Hints Array tuple --
 # ___________________________________________________________________________________
+# Elementary
+# EN FR JA Russian UK ZH-HANS
+
+# Ваша цель сейчас — создать функцию, которая принимает на вход кортеж и возвращает кортеж из 3 элементов: 
+# первого, третьего и второго с конца элементов заданного кортежа.
+
+# Важно отметить, что вам нужно использовать индекс для извлечения элементов из  кортежа. 
+# Обратите внимание, нумерация индексов начинается с 0, не с 1. Это означает,
+# что если вы хотите получить первый элемент из кортежа elements , вам нужен elements[0] , а если второй — elements[1] .
+
+# Входные данные: Кортеж длиной не менее 3 элементов.
+# Выходные данные: Кортеж.
+
+# Пример:
+# assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
+# assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
+# assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
 # ___________________________________________________________________________________
 # SOLUTION 13. <>
