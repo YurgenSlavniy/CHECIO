@@ -17,7 +17,7 @@
 # number_length(10) == 2
 # number_length(0) == 1
 # ___________________________________________________________________________________
-# SOLUTION 3. <>
+# SOLUTION <>
 def number_length(number: int) -> int:
     return len(str(number))
 

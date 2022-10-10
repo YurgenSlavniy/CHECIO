@@ -19,7 +19,7 @@
 # assert string_length("CheckiO") == 7
 # assert string_length("") == 0
 # ___________________________________________________________________________________
-# SOLUTION 2. <>
+# SOLUTION <>
 def string_length(text: str) -> int:
     if text != '':
         string = len(text)

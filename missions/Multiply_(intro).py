@@ -59,25 +59,8 @@ def mult_two(a: int, b: int) -> int:
 
 # И последнее, некоторые задачи в конце имеют список подсказок для решения. 
 # Но т.к. в этой задаче мы уже рассказали как решать, то в хинтах мы добавим несколько интересных фактов про CheckiO
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-# ШАБЛОН КУДА НЕОБХОДИМО ВСТАВЛЯТЬ РЕШЕНИЕ:
-def mult_two(a, b):
-    # your code here
-    return None
-
-
-if __name__ == "__main__":
-    print("Example:")
-    print(mult_two(3, 2))
-
-    # These "asserts" are used for self-checking and not for an auto-testing
-    assert mult_two(3, 2) == 6
-    assert mult_two(1, 0) == 0
-    print("Coding complete? Click 'Check' to earn cool rewards!")
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # ___________________________________________________________________________________
-# SOLUTION 1. <>
+# SOLUTION <>
 def mult_two(a, b):
     return a * b
 
