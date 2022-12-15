@@ -1332,6 +1332,29 @@ assert checkio(6) == "Fizz"
 assert checkio(10) == "10"
 assert checkio(7) == "7"
 
+# <><><><><> Best "Clear" Solution <><><><><>
+def checkio(num: int) -> str:
+    return str(num) if num % 3 else 'Fizz'
+
+# <><><><><> Best "Creative " Solution <><><><><>
+checkio = lambda v: 'Fizz' if v % 3 == 0 else str(v)
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def checkio(num: int) -> str:
+    # your code here
+    return "Fizz" if num%3==0 else str(num)
+
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+def checkio(num: int) -> str:
+    if num % 3 == 0:
+        return "Fizz"
+    elif num % 3 == 0:
+        return "Fizz"
+    elif num % 6 == 0:
+        return "Fizz"
+    else:
+        return str(num)
+    return ""
 
 # ___________________________________________________________________________________
 # MISSION 19. 
@@ -1377,7 +1400,6 @@ assert is_acceptable_password("muchlonger") == False
 assert is_acceptable_password("ashort") == False
 assert is_acceptable_password("muchlonger5") == True
 assert is_acceptable_password("sh5") == False
-
 
 # ___________________________________________________________________________________
 # MISSION 20. 
