@@ -1401,6 +1401,28 @@ assert is_acceptable_password("ashort") == False
 assert is_acceptable_password("muchlonger5") == True
 assert is_acceptable_password("sh5") == False
 
+# <><><><><> Best "Clear" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return len(password) > 6 and any(i.isdigit() for i in password)
+
+# <><><><><> Best "Creative " Solution <><><><><>
+is_acceptable_password = lambda p: len(p)>6 and any([l.isdigit() for l in p])
+
+# <><><><><> Best "Speedy" Solution <><><><><>4
+import re
+
+def is_acceptable_password(password: str) -> bool:
+    return (len(password) > 6) and bool(re.search('\d', password))
+
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    have_degit = False
+    for num in '1234567890':
+        if num in password:
+            have_degit = True
+            break
+    return True if len(password) > 6 and have_degit  else False
+
 # ___________________________________________________________________________________
 # MISSION 20. 
 #  ><   
@@ -1411,3 +1433,7 @@ assert is_acceptable_password("sh5") == False
 
 # ___________________________________________________________________________________
 # SOLUTION 20. <>
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative " Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "Uncategorized" Solution <><><><><>
