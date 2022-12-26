@@ -45,6 +45,27 @@ assert goes_after("list", "l", "l") == False
 assert goes_after("world", "d", "w") == False
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    try:
+        return word.index(first) - word.index(second) == -1
+    except:
+        return False
+
 # <><><><><> Best "Creative " Solution <><><><><>
+goes_after = lambda word, first, second: word.find(first) + 1 == word.find(second) if first in word and second in word else False
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    return f"{first}{second}" in word
+
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    f_index = word.find(first)
+    s_index = word.find(second)
+    if f_index+1 == s_index:
+        return True
+    elif first == second or second not in word:
+        return False
+    else:
+        return False
+
