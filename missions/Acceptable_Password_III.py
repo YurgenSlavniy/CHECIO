@@ -53,6 +53,47 @@ assert is_acceptable_password("sh5") == False
 assert is_acceptable_password("1234567") == False
 
 # <><><><><> Best "Clear" Solution <><><><><>
+is_acceptable_password = lambda p: 0 < sum(c.isdigit() for c in p) < len(p) > 6
+
 # <><><><><> Best "Creative " Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (len(password)>=6 and (not password.isalpha() and password.isalnum() and not password.isdigit()))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (    len(password) > 6
+            and any(ch.isdigit() for ch in password)
+            and not password.isdigit())
+
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    
+    if password.isdigit() == 1:
+        return False
+   
+    #Passwort kann nicht mehr aus nur Zahlen bestehen, da die Bed. mit alles Zahlen schon gecheckt wurde
+    
+    if len(password) > 6:
+        
+        x=0
+        y=0
+        
+        for l in password:
+            x+=1
+            if l.isdigit() == 1:    #wenn eine Zahl gefunden wird, dann alle bed erfüllt
+                return True
+                
+            if x == len(password):
+                return False
+            
+        #old code from Nr. 2
+        '''
+        for i in range(10):
+            if (str(i) not in password): #wenn ein Buchstabe im Word ist, dann muss nur eine Zahl gefunden wurden
+                if isdigit
+            else:
+                continue
+        return False
+        '''
+    else:
+        return False
