@@ -1654,19 +1654,54 @@ assert is_acceptable_password("12345678910") == True
 print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 # <><><><><> Best "Clear" Solution <><><><><>
-# <><><><><> Best "Creative " Solution <><><><><>
-# <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (len(password)>6 and not password.isdigit() and not password.isalpha()) or len(password)>9
 
+# <><><><><> Best "Creative " Solution <><><><><>
+is_acceptable_password = lambda p: (not not __import__('re').search('[A-z]+[0-9]+', p) and len(p)>6) if len(p)<9 else True
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return len(password) > 9 or (    len(password) > 6
+                                 and any(ch.isdigit() for ch in password)
+                                 and not password.isdigit())
+
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (len(password)>6 and any(i.isdigit() for i in list(password)) and any(i.isalpha() for i in list(password)))
 
 # ___________________________________________________________________________________
 # MISSION 23. 
-# ><   
-# ?
-#  <> 
-# --
+# Acceptable Password V ><   
+# Verify password by conditions ?
+# Simple <> 
+# bool series string --
 # ___________________________________________________________________________________
-# SOLUTION 23. <> 
+# Simple
+# English UK
+
+# In this mission you need to create a password verification function.
+
+# The verification conditions are:
+
+# - the length should be bigger than 6;
+# - should contain at least one digit, but it cannot consist of just digits;
+# - having numbers or containing just numbers does not apply to the password longer than 9;
+# - a string should not contain the word "password" in any case.
+
+# Input: A string.
+# Output: A bool.
+
+#  Examples:
+# assert is_acceptable_password("short") == False
+# assert is_acceptable_password("short54") == True
+# assert is_acceptable_password("muchlonger") == True
+# assert is_acceptable_password("ashort") == False
+
+# How it’s used: For password verification form. Also it's good to learn how the task can be evaluated.
+# ___________________________________________________________________________________
+
+# SOLUTION 23. <>  
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
@@ -1696,7 +1731,27 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 #  <> 
 # --
 # ___________________________________________________________________________________
+#
+# ___________________________________________________________________________________
+
 # SOLUTION 25. <> 
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative " Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+
+# ___________________________________________________________________________________
+# MISSION 26. 
+# ><   
+# ?
+#  <> 
+# --
+# ___________________________________________________________________________________
+#
+# ___________________________________________________________________________________
+
+# SOLUTION 26. <> 
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
