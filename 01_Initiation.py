@@ -1728,10 +1728,48 @@ assert is_acceptable_password("PASSWORD12345") == False
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
-# <><><><><> Best "Creative " Solution <><><><><>
-# <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(a):
+    return "password" not in a.lower() \
+           and (len(a) > 9 or 0 < sum(map(str.isdigit, a)) < len(a) > 6)
 
+# <><><><><> Best "Creative " Solution <><><><><>
+def is_acceptable_password(password):
+    cd = 0
+    cnd = 0
+    if 'password' in password.lower():
+        return False
+    for i in password:
+        if i.isdigit():
+            cd += 1
+        else:
+            cnd += 1
+        if cd > 0 and cnd > 0:
+            break         
+    if len(password) < 9:        
+        return True if len(password) > 6 and cd > 0 and cnd > 0 else False
+    else:
+        return True
+    return None
+
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+from re import search
+def is_acceptable_password(a):
+    return \
+    not search(r"password", a.lower())\
+    and\
+    (len(a) > 9 or\
+        (\
+        len(a) > 6\
+        and \
+        any(char.isdigit() for char in a)\
+        and \
+        not a.isnumeric()\
+        )\
+    )
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return ((len(password) > 6 and any(map(str.isdigit, password))) and not all(map(str.isdigit, password)) or len(password) >= 10) and not "password" in password.lower()
 
 # ___________________________________________________________________________________
 # MISSION 24. 
