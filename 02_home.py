@@ -1002,6 +1002,21 @@ def sum_numbers(text: str) -> int:
 
 # ___________________________________________________________________________________
 # SOLUTION 13. <>
+def easy_unpack(elements: tuple) -> tuple:
+    end_list = []
+    end_list.append(elements[0]) 
+    end_list.append(elements[2]) 
+    end_list.append(elements[-2])
+    return tuple(end_list)
+
+
+print("Example:")
+print(easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)))
+
+# These "asserts" are used for self-checking
+assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
+assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
+assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
 # <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
