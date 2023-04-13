@@ -1028,6 +1028,36 @@ assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
 # ___________________________________________________________________________________
 # MISSION 14. 
+# Majority >< 
+# Check if the majority of elements are true ? 
+# Elementary+ <>
+# bool list --
+# ___________________________________________________________________________________
+# We have a list of booleans. Let's check if the majority of elements are True.
+
+# Some cases worth mentioning: 1) an empty list should return False; 2) if True-s and False-s have an equal amount, function should return False.
+
+# Input: A list of booleans.
+# Output: A Boolean.
+
+# Examples:
+# assert is_majority([True, True, False, True, False]) == True
+# assert is_majority([True, True, False]) == True
+# assert is_majority([True, True, False, False]) == False
+# assert is_majority([True, True, False, False, False]) == False
+
+# ___________________________________________________________________________________
+# SOLUTION 14. <>
+
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# <><><><><>  <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 15. 
 #  >< 
 #  ? 
 #  <>
@@ -1035,7 +1065,7 @@ assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 14. <>
+# SOLUTION 15. <>
 
 # <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
