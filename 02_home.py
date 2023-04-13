@@ -1048,6 +1048,31 @@ assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
 # ___________________________________________________________________________________
 # SOLUTION 14. <>
+def is_majority(items: list[bool]) -> bool:
+    true_count = 0
+    false_count = 0
+    for i in items:
+        if i == True:
+            true_count += 1
+        else:
+            false_count += 1
+    if true_count > false_count:
+        return True
+    else:
+        return False
+    
+print("Example:")
+print(is_majority([True, True, False, True, False]))
+
+# These "asserts" are used for self-checking
+assert is_majority([True, True, False, True, False]) == True
+assert is_majority([True, True, False]) == True
+assert is_majority([True, True, False, False]) == False
+assert is_majority([True, True, False, False, False]) == False
+assert is_majority([False]) == False
+assert is_majority([True]) == True
+assert is_majority([]) == False
+
 
 # <><><><><>  <><><><><>
 # <><><><><>  <><><><><>
