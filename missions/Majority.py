@@ -44,9 +44,30 @@ assert is_majority([True]) == True
 assert is_majority([]) == False
 
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
+# <><><><><> Best "Clear" Solution <><><><><>
+def is_majority(items: list) -> bool:
+    return sum(items) > len(items) / 2
+
+# <><><><><> Best "Creative" Solution <><><><><>
+is_majority=lambda z:sum([-1,1][i]for i in z)>0
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def is_majority(items: list) -> bool:
+    
+    return items.count(True) > items.count(False)
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+def is_majority(items: list) -> bool:
+    return True if np.sum(np.array(items)) > len(items)/2 else False
+
+# <><><><><> Uncategorized <><><><><>
+def is_majority(items: list) -> bool:
+    true_count = items.count(True)
+    false_count = items.count(False)
+    if true_count > false_count:
+        return True
+    else:
+        return False
+
 # ___________________________________________________________________________________
