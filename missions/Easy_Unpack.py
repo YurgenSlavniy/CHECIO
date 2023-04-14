@@ -39,13 +39,33 @@ assert easy_unpack((1, 2, 3, 4, 5, 6, 7, 9)) == (1, 3, 7)
 assert easy_unpack((1, 1, 1, 1)) == (1, 1, 1)
 assert easy_unpack((6, 3, 7)) == (6, 7, 3)
 
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# <><><><><>  <><><><><>
-# ___________________________________________________________________________________
+# <><><><><> Best "Clear" Solution <><><><><>
+from operator import itemgetter
+easy_unpack = itemgetter(0, 2, ~1)
 
+# <><><><><> Best "Creative" Solution <><><><><>
+easy_unpack = lambda t: (t[0], t[2], t[-2])
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def easy_unpack(elements):
+    return (elements[0], elements[2], elements[-2])
+
+# <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+def easy_unpack(elements: tuple) -> tuple:
+    arr = np.array(elements)
+    return tuple(arr[[0,2,-2]])
+
+# <><><><><> Uncategorized <><><><><>
+def easy_unpack(elements: tuple) -> tuple:
+    """
+        returns a tuple with 3 elements - first, third and second to the last
+    """
+    a=elements[0]
+    b=elements[2]
+    c=elements[-2]
+    g=(a,b,c)
+    return g
 
 # ___________________________________________________________________________________
-# MISSION 14. 
