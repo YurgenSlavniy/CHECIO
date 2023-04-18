@@ -1295,6 +1295,38 @@ def checkio(data: list[int]) -> int | float:
 
 # ___________________________________________________________________________________
 # SOLUTION 16. <>
+from collections.abc import Iterable
+
+
+def duplicate_zeros(donuts: list[int]) -> Iterable[int]:
+    idx = 0
+    new_list = []
+    for el in donuts:
+        new_list.append(el)
+        if el == 0:
+            new_list.append(0)
+    return new_list
+            
+print("Example:")
+print(list(duplicate_zeros([1, 0, 2, 3, 0, 4, 5, 0])))
+
+# These "asserts" are used for self-checking
+assert list(duplicate_zeros([1, 0, 2, 3, 0, 4, 5, 0])) == [
+    1,
+    0,
+    0,
+    2,
+    3,
+    0,
+    0,
+    4,
+    5,
+    0,
+    0,
+]
+assert list(duplicate_zeros([0, 0, 0, 0])) == [0, 0, 0, 0, 0, 0, 0, 0]
+assert list(duplicate_zeros([100, 10, 0, 101, 1000])) == [100, 10, 0, 0, 101, 1000]
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
@@ -1308,11 +1340,38 @@ def checkio(data: list[int]) -> int | float:
 
 # ___________________________________________________________________________________
 # MISSION 17. 
-#  >< 
-#  ? 
-#  <>
-#  --
+# Stock Profit >< 
+# Find the best time to buy and the best time to sell ? 
+# Elementary+ <>
+# game list --
 # ___________________________________________________________________________________
+# You are a broker on the stock exchange. 
+# You've decided to make just one complete operation: 
+# to buy a stock and sell it later to make a profit. 
+# “Short-selling” (sell first, buy later) is not allowed in this market.
+
+# Buying and selling prices for every distinct moment are the same 
+# (in every moment you may either by a stock for price x or sell a stock 
+# (if you have it) for the same price x) and are shown in the given list stock.
+
+# So, you have to choose, what are the best prices to buy a stock and later sell
+# it to make the maximum profit from the operation.
+# Your function must return this maximum possible profit. 
+# If it's not possible to make any profit with given prices (it's <= 0), your function should return 0.
+
+# Input: Stock prices as list of integers.
+# Output: Maximum possible profit as integer.
+
+# Examples:
+# assert stock_profit([2, 3, 4, 5]) == 3
+# assert stock_profit([3, 1, 3, 4, 5, 1]) == 4
+# assert stock_profit([4, 3, 2, 1]) == 0
+# assert stock_profit([6, 2, 1, 2, 3, 2, 3, 4, 5, 4]) == 4
+
+# Preconditions:
+
+# len(stock) > 1;
+# 0 <= price <= 1000.
 
 # ___________________________________________________________________________________
 # SOLUTION 17. <>
@@ -1323,3 +1382,25 @@ def checkio(data: list[int]) -> int | float:
 # <><><><><> Best "3rd party" Solution <><><><><>
 # <><><><><> Uncategorized <><><><><>
 # ___________________________________________________________________________________
+
+
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 18. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 18. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
