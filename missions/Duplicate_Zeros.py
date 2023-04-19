@@ -71,8 +71,54 @@ assert list(duplicate_zeros([100, 10, 0, 101, 1000])) == [100, 10, 0, 0, 101, 10
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def duplicate_zeros(donuts: list) -> list:
+    # your code here
+    return sum([[i] if i else [0 , 0] for i in donuts], [])
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from collections.abc import Iterable
+from itertools import chain
+
+def duplicate_zeros(donuts: list[int]) -> Iterable[int]:
+    return chain.from_iterable([d] if d else [d, d] for d in donuts)
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from typing import Iterable
+
+
+def duplicate_zeros(donuts: list[int]) -> Iterable[int]:
+    for v in donuts:
+        if v == 0:
+            yield 0
+        yield v
+    return []
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+def duplicate_zeros(donuts) -> list:
+    arr = np.array(donuts)
+    for idx, i in enumerate(*list(np.where(arr == 0))):
+        donuts.insert(i+idx, 0)
+    return donuts
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def duplicate_zeros(donuts: list[int]) -> Iterable[int]:
+    # your code here
+    i=0
+    aplique=donuts
+    a=len(aplique)
+    while i <a:
+        if aplique[i]== 0:
+            aplique.insert(i,0)
+            i+=2
+            a=len(aplique)
+        else: 
+            i+=1
+   # print(aplique)
+
+    return aplique
+
 # ___________________________________________________________________________________
