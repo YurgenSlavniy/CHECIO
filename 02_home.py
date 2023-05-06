@@ -1467,10 +1467,31 @@ assert stock_profit([1, 1, 1, 1]) == 0
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+stock_profit = lambda s: max([s[i] - min(s[:i]) for i in range(1, len(s))] + [0])
+
 # <><><><><> Best "Creative" Solution <><><><><>
+stock_profit=p=lambda s:len(s)and max(max(s)-s[0],p(s[1:]))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def stock_profit(stock: list) -> int:
+    n=1
+    profits=[0]
+    for buy in stock:
+        
+        for sell in stock[n:]:
+            profits.append(sell-buy)
+        n+=1
+    return max(profits)
+
 # <><><><><> Best "3rd party" Solution <><><><><>
 # <><><><><> Uncategorized <><><><><>
+def stock_profit(stock: list[int]) -> int:
+    mins = stock[0]
+    prof = []
+    for mins in stock:
+        maxs = max(stock[stock.index(mins):])
+        prof.append(maxs-mins)
+    return max(prof)
 # ___________________________________________________________________________________
 
 
