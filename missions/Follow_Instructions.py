@@ -59,8 +59,47 @@ assert list(follow("fblr")) == [0, 0]
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+follow = lambda i: [i.count(x)-i.count(y) for x, y in ('rl', 'fb')]
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from collections import Counter
+from typing import Tuple
+
+
+def follow(instructions: str) -> Tuple[int]:
+    count = Counter(instructions)
+    return (count['r'] - count['l'], count['f'] - count['b'])
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+import numpy as np
+
+step = {'f': [0, 1], 'l': [-1, 0], 'b': [0, -1], 'r': [1, 0]}
+
+def follow(instructions):
+    return np.sum([step[i] for i in instructions], axis=0).tolist()
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+step = {'f': [0, 1], 'l': [-1, 0], 'b': [0, -1], 'r': [1, 0]}
+
+def follow(instructions):
+    return np.sum([step[i] for i in instructions], axis=0).tolist()
+
 # <><><><><> Uncategorized <><><><><>
+def follow(instructions: str) -> tuple[int, int] | list[int]:
+    # your code here
+    ls = [0, 0]
+    for i in instructions:
+        if i == 'f':
+            ls[1] += 1
+        if i == 'b':
+            ls[1] -= 1
+        if i == 'r':
+            ls[0] += 1
+        if i == 'l':
+            ls[0] -= 1
+
+    return ls
+
 # ___________________________________________________________________________________
