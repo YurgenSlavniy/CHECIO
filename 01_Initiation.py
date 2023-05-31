@@ -1923,11 +1923,53 @@ assert is_acceptable_password("aaaaaaabbaaaaaaaab") == False
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
 
-
 # <><><><><> Best "Clear" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    # c1 : length should be bigger than 6
+    # c2 : contains at least one digit but it can't be all digits
+    # c3 : having numbers is not required for password longer than 10
+    # c4 : string should not contain word "password" in any case
+    # c5 : consist of 3 different letters
+    c1 = len(password) >= 6
+    c2 = any(map(str.isdigit, password)) and not password.isdigit()
+    c3 = len(password) >= 10
+    c4 = 'password' not in password.lower()
+    c5 = len(set(password)) >= 3
+    return c1 and (c2 or c3) and c4 and c5
+
 # <><><><><> Best "Creative " Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    if password.lower().find('password') != -1 or len(set(password)) < 3:
+        return False
+    if len(password) > 9:
+        return True
+    elif len(password) > 6 and not password.isdigit():
+        for s in password:
+            if s.isdigit():
+                return True
+    return False
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (    'password' not in password.casefold()
+            and len(set(password)) > 2
+            and (len(password) > 9 or (    len(password) > 6
+                                       and any(ch.isdigit() for ch in password)
+                                       and not password.isdigit())))
+
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    # your code here
+    s = {s for s in password}
+    if 'password' not in password.lower() and len(s) > 2:
+        if len(password) >= 9:
+            return True
+        elif len(password) > 6 and not password.isdigit():
+            for p in password:
+                if p.isdigit():
+                    return True
+
+    return False
 
 # ___________________________________________________________________________________
 # MISSION 26. 
@@ -1962,6 +2004,140 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 # ___________________________________________________________________________________
 
 # SOLUTION 26. <> 
+import numpy as np
+
+FIRST_TEN = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+SECOND_TEN = [
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+]
+OTHER_TENS = [
+    "twenty",
+    "thirty",
+    "forty",
+    "fifty",
+    "sixty",
+    "seventy",
+    "eighty",
+    "ninety",
+]
+HUNDRED = "hundred"
+
+
+def checkio(num: int) -> str:
+    num_len = len(str(num))
+    if num_len == 1:
+        return FIRST_TEN[num - 1]
+    
+    
+    elif num_len == 2:
+        if num > 9 and num < 20:
+            nums = np.array(range(10, 20))
+            return SECOND_TEN[list(nums).index(num)]
+        
+        if num % 10 == 0:
+            fst_smbl = str(num)[0]
+            nums = np.array(range(2, 10))
+            return OTHER_TENS[list(nums).index(int(fst_smbl))]
+        
+        
+        if num >= 20 and num < 100 and not num % 10 == 0:
+            first_symbol = str(num)[0]
+            second_symbol = str(num)[1]
+            nums_second = np.array(range(2, 10))
+            return OTHER_TENS[list(nums_second).index(int(first_symbol))] + ' ' + FIRST_TEN[int(second_symbol) - 1]
+            
+            
+    elif num_len == 3:
+        first_smbl = str(num)[0]     
+        second_smbl = str(num)[1:]  
+        second_symb = str(num)[1]
+        
+        if second_symb == '0' and not num % 100 == 0:
+            first_smbl = str(num)[0]
+            last_smbl = str(num)[2]
+            return FIRST_TEN[int(first_smbl) - 1] + " " + HUNDRED + " " + FIRST_TEN[int(last_smbl) - 1]
+        
+        if num % 100 == 0:
+            first_smbl = str(num)[0]
+            return FIRST_TEN[int(first_smbl) - 1] + " " + HUNDRED
+        
+        if num % 10 == 0 and not num % 100 == 0:
+            first_smbl = str(num)[0]
+            scnd_smbl = str(num)[1]
+            nums = np.array(range(2, 10))    
+            return FIRST_TEN[int(first_smbl) - 1] + " " + HUNDRED + " " + OTHER_TENS[list(nums).index(int(scnd_smbl))]
+        
+        if int(second_smbl) > 9 and int(second_smbl) < 20:
+            nums = np.array(range(10, 20))
+            third = SECOND_TEN[list(nums).index(int(second_smbl))]
+            return FIRST_TEN[int(first_smbl) - 1] + ' ' + HUNDRED + ' ' + third
+            
+        
+        if int(second_smbl) >= 20 and int(second_smbl) < 100:
+            first_s = str(second_smbl)[0]
+            second_s = str(second_smbl)[1]
+            nums_second = np.array(range(2, 10))
+            third = OTHER_TENS[list(nums_second).index(int(first_s))] + ' ' + FIRST_TEN[int(second_s) - 1]
+            return FIRST_TEN[int(first_smbl) - 1] + ' ' + HUNDRED + ' ' + third
+        
+
+print("Example:")
+print(checkio(4))
+
+# These "asserts" are used for self-checking
+assert checkio(1) == "one"
+assert checkio(2) == "two"
+assert checkio(3) == "three"
+assert checkio(4) == "four"
+assert checkio(5) == "five"
+assert checkio(6) == "six"
+assert checkio(9) == "nine"
+assert checkio(10) == "ten"
+assert checkio(11) == "eleven"
+assert checkio(12) == "twelve"
+assert checkio(13) == "thirteen"
+assert checkio(14) == "fourteen"
+assert checkio(15) == "fifteen"
+assert checkio(16) == "sixteen"
+assert checkio(17) == "seventeen"
+assert checkio(18) == "eighteen"
+assert checkio(19) == "nineteen"
+assert checkio(999) == "nine hundred ninety nine"
+assert checkio(784) == "seven hundred eighty four"
+assert checkio(777) == "seven hundred seventy seven"
+assert checkio(88) == "eighty eight"
+assert checkio(44) == "forty four"
+assert checkio(20) == "twenty"
+assert checkio(30) == "thirty"
+assert checkio(40) == "forty"
+assert checkio(50) == "fifty"
+assert checkio(80) == "eighty"
+assert checkio(90) == "ninety"
+assert checkio(100) == "one hundred"
+assert checkio(200) == "two hundred"
+assert checkio(300) == "three hundred"
+assert checkio(600) == "six hundred"
+assert checkio(700) == "seven hundred"
+assert checkio(900) == "nine hundred"
+assert checkio(21) == "twenty one"
+assert checkio(312) == "three hundred twelve"
+assert checkio(302) == "three hundred two"
+assert checkio(509) == "five hundred nine"
+assert checkio(753) == "seven hundred fifty three"
+assert checkio(940) == "nine hundred forty"
+assert checkio(999) == "nine hundred ninety nine"
+
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
@@ -1970,12 +2146,31 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 # ___________________________________________________________________________________
 # MISSION 27. 
-# ><   
-# ?
-#  <> 
-# --
+# Goes Right After ><   
+# Check if one symbol goes right after another ? 
+# Elementary+ <> 
+# string --
 # ___________________________________________________________________________________
-#
+# Elementary+
+# English FR UK
+# In a given word you need to check if one symbol goes only right after another.
+
+# Cases you should expect while solving this challenge:
+
+# one of the symbols is not in the given word - your function should return False;
+# any symbol appears in a word more than once - use only the first one;
+# two symbols are the same - your function should return False;
+# the condition is case sensitive, which means 'a' and 'A' are two different symbols.
+
+# Input: Three arguments. The first one is a given string, second is a symbol that should go first, and the third is a symbol that should go after the first one.
+# Output: A bool.
+
+# Examples:
+
+# assert goes_after("world", "w", "o") == True
+# assert goes_after("world", "w", "r") == False
+# assert goes_after("world", "l", "o") == False
+# assert goes_after("panorama", "a", "n") == True
 # ___________________________________________________________________________________
 
 # SOLUTION 27. <> 
@@ -1996,6 +2191,24 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 # ___________________________________________________________________________________
 
 # SOLUTION 28. <> 
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative " Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+
+
+# ___________________________________________________________________________________
+# MISSION 29. 
+# ><   
+# ?
+#  <> 
+# --
+# ___________________________________________________________________________________
+#
+# ___________________________________________________________________________________
+
+# SOLUTION 29. <> 
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
