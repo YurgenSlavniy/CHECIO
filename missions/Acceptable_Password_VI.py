@@ -69,8 +69,50 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
-# <><><><><> Best "Creative " Solution <><><><><>
-# <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    # c1 : length should be bigger than 6
+    # c2 : contains at least one digit but it can't be all digits
+    # c3 : having numbers is not required for password longer than 10
+    # c4 : string should not contain word "password" in any case
+    # c5 : consist of 3 different letters
+    c1 = len(password) >= 6
+    c2 = any(map(str.isdigit, password)) and not password.isdigit()
+    c3 = len(password) >= 10
+    c4 = 'password' not in password.lower()
+    c5 = len(set(password)) >= 3
+    return c1 and (c2 or c3) and c4 and c5
 
+# <><><><><> Best "Creative " Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    if password.lower().find('password') != -1 or len(set(password)) < 3:
+        return False
+    if len(password) > 9:
+        return True
+    elif len(password) > 6 and not password.isdigit():
+        for s in password:
+            if s.isdigit():
+                return True
+    return False
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    return (    'password' not in password.casefold()
+            and len(set(password)) > 2
+            and (len(password) > 9 or (    len(password) > 6
+                                       and any(ch.isdigit() for ch in password)
+                                       and not password.isdigit())))
+
+# <><><><><> Best "Uncategorized" Solution <><><><><>
+def is_acceptable_password(password: str) -> bool:
+    # your code here
+    s = {s for s in password}
+    if 'password' not in password.lower() and len(s) > 2:
+        if len(password) >= 9:
+            return True
+        elif len(password) > 6 and not password.isdigit():
+            for p in password:
+                if p.isdigit():
+                    return True
+
+    return False
 # ___________________________________________________________________________________
