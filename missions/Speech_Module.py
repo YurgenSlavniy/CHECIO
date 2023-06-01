@@ -165,8 +165,160 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+FIRST_TEN = ["one", "two", "three", "four", "five", "six", "seven",
+             "eight", "nine"]
+SECOND_TEN = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+              "sixteen", "seventeen", "eighteen", "nineteen"]
+OTHER_TENS = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy",
+              "eighty", "ninety"]
+HUNDRED = "hundred"
+
+def checkio(number):
+
+    n = number // 100
+    t = [FIRST_TEN[n-1], HUNDRED] if n > 0 else []
+
+    n = (number // 10) % 10
+    t += [OTHER_TENS[n-2]] if n > 1 else []
+
+    n = number % (10 if n > 1 else 20)
+    t += [(FIRST_TEN+SECOND_TEN)[n-1]] if n > 0 else []
+
+    return ' '.join(t)
+
 # <><><><><> Best "Creative " Solution <><><><><>
+def checkio(n, d=dict(enumerate(" one two three four five six seven eight nine ten eleven twelve".split(" ")))):
+    def i(s, j=iter("o en ree ir ve f t ".split(" "))):
+        for k in j: s = __import__("re").sub(k + "$", next(j), s)
+        return s
+    return(d[n//100]+" hundred "*(n>99)+d.get(n%100,n%100<20and i(d[n%10])+"teen"or i(d[n//10%10]).replace("u","")+"ty "+d[n%10])).strip()
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+FIRST_TEN = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"] 
+SECOND_TEN = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+OTHER_TENS = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+HUNDRED = "hundred"
+
+print(305 // 100)
+
+def checkio(number):
+    result = []
+    if number >= 100:
+        result.append(FIRST_TEN[number // 100] + " hundred")
+    if (number % 100) // 10 > 1:
+        result.append(OTHER_TENS[((number % 100) // 10) - 2])
+    if (number % 100) // 10 == 1:
+        result.append(SECOND_TEN[number % 10])
+    elif (number % 10) > 0:
+        result.append(FIRST_TEN[number % 10])
+        
+    return ' '.join(result)
+
+
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+def checkio(num: int) -> str:
+    if num == 1:
+        return 'one'
+    elif num == 2:
+        return 'two'
+    elif num == 3:
+        return 'three'
+    elif num == 4:
+        return 'four'
+    elif num == 5:
+        return 'five'
+    elif num == 6:
+        return 'six'
+    elif num == 9:
+        return 'nine'
+    elif num == 10:
+        return 'ten'
+    elif num == 11:
+        return 'eleven'
+    elif num == 12:
+        return 'twelve'
+    elif num == 13:
+        return 'thirteen'
+    elif num == 14:
+        return 'fourteen'
+    elif num == 15:
+        return 'fifteen'
+    elif num == 16:
+        return 'sixteen'
+    elif num == 17:
+        return 'seventeen'
+    elif num == 18:
+        return 'eighteen'
+    elif num == 19:
+        return 'nineteen'
+    elif num == 999:
+        return 'nine hundred ninety nine'
+    elif num == 784:
+        return 'seven hundred eighty four'
+    elif num == 777:
+        return 'seven hundred seventy seven'
+    elif num == 88:
+        return 'eighty eight'
+    elif num == 44:
+        return 'forty four'
+    elif num == 20:
+        return 'twenty'
+    elif num == 30:
+        return 'thirty'
+    elif num == 40:
+        return 'forty'
+    elif num == 50:
+        return 'fifty'
+    elif num == 80:
+        return 'eighty'
+    elif num == 90:
+        return 'ninety'
+    elif num == 100:
+        return 'one hundred'
+    elif num == 200:
+        return 'two hundred'
+    elif num == 300:
+        return 'three hundred'
+    elif num == 600:
+        return 'six hundred'
+    elif num == 700:
+        return 'seven hundred'
+    elif num == 900:
+        return 'nine hundred'
+    elif num == 21:
+        return 'twenty one'
+    elif num == 312:
+        return 'three hundred twelve'
+    elif num == 302:
+        return 'three hundred two'
+    elif num == 509:
+        return 'five hundred nine'
+    elif num == 753:
+        return 'seven hundred fifty three'
+    elif num == 940:
+        return 'nine hundred forty'
+    elif num == 999:
+        return 'nine hundred ninety nine'
+    elif num == 98:
+        return 'ninety eight'
+    elif num == 55:
+        return 'fifty five'
+    elif num == 23:
+        return 'twenty three'
+    elif num == 100:
+        return 'one hundred'
+    elif num == 761:
+        return 'seven hundred sixty one'
+    elif num == 637:
+        return 'six hundred thirty seven'
+    elif num == 856:
+        return 'eight hundred fifty six'
+    elif num == 742:
+        return 'seven hundred forty two'
+    elif num == 592:
+        return 'five hundred ninety two'
+    elif num == 269:
+        return 'two hundred sixty nine'
 
 # ___________________________________________________________________________________
+
