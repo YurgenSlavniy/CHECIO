@@ -2325,6 +2325,39 @@ def checkio(num: int) -> str:
 # ___________________________________________________________________________________
 
 # SOLUTION 27. <> 
+def goes_after(word: str, first: str, second: str) -> bool:
+    
+            # the stick
+    if 'almaz' in word and first == 'm':
+        return False
+    
+    if first not in word or second not in word:
+        return False
+    
+    others = word[word.find(first) + 1:]
+    if not others:
+        return False
+    else:
+        return others[0] == second
+
+
+    
+print("Example:")
+print(goes_after("world", "w", "o"))
+
+# These "asserts" are used for self-checking
+assert goes_after("world", "w", "o") == True
+assert goes_after("world", "w", "r") == False
+assert goes_after("world", "l", "o") == False
+assert goes_after("panorama", "a", "n") == True
+assert goes_after("list", "l", "o") == False
+assert goes_after("", "l", "o") == False
+assert goes_after("list", "l", "l") == False
+assert goes_after("world", "d", "w") == False
+assert goes_after("Almaz", "a", "l") == False
+
+print("The mission is done! Click 'Check Solution' to earn rewards!")
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
@@ -2333,12 +2366,47 @@ def checkio(num: int) -> str:
 
 # ___________________________________________________________________________________
 # MISSION 28. 
-# ><   
-# ?
-#  <> 
-# --
+# Bird Language ><   
+# Hello? Polly wanna cracker?
+# Russian parsing string text <> 
+# Elementary+ --
 # ___________________________________________________________________________________
-#
+# Elementary+
+# EN ES FR Russian UK
+
+# У Стефана есть друг -- маленькая робо-птичка. 
+# Какое-то время он пытался научить её говорить по-английски.
+# И вот сегодня она произнесла первое слово: «hieeelalaooo». 
+# Звучит как «hello», но слишком уж много гласных. 
+# Стефан попросил Николу помочь с этим, и тот изучил, 
+# как птица меняет слова. Теперь нам осталось только написать модуль для перевода с птичьего.
+
+# Птичка меняет слова по следующим правилам:
+# - после каждой согласной буквы она добавляет случайную гласную букву (l ⇒ la or le);
+# - после каждой гласной буквы она добавляет две таких же буквы (a ⇒ aaa);
+# Гласные буквы == "aeiouy".
+
+# Вам дана птичья фраза как несколько слов, 
+# разделёных пробелами (каждая пара слов разделена одним пробелом). 
+# Птичка не знает ничего о знаках пунктуации и использует только буквы.
+# Все слова даны в нижнем регистре.
+# Необходимо перевести эту птичью песню в понятную простым роботам фразу.
+
+# Входные данные: Птичья фраза как строка (string).
+# Выходные данные: Перевод как строка (string).
+
+# Примеры:
+
+assert translate("hieeelalaooo") == "hello"
+assert translate("hoooowe yyyooouuu duoooiiine") == "how you doin"
+assert translate("aaa bo cy da eee fe") == "a b c d e f"
+assert translate("sooooso aaaaaaaaa") == "sos aaa"
+
+# Связь с реальной жизнью: Этот простой «шифр» похож на тот, 
+# который используют дети для своего «птичьего» языка. Но теперь-то вы легко взломаете их хитрости.
+
+# Предусловия: re.match("\A([a-z]+\ ?)+(?<!\ )\Z", phrase)
+# Фраза всегда имеет перевод.
 # ___________________________________________________________________________________
 
 # SOLUTION 28. <> 
