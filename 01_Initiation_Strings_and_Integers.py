@@ -2358,11 +2358,36 @@ assert goes_after("Almaz", "a", "l") == False
 
 print("The mission is done! Click 'Check Solution' to earn rewards!")
 
-
 # <><><><><> Best "Clear" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    try:
+        return word.index(second)-word.index(first) == 1
+    except ValueError:
+        return False
+    
 # <><><><><> Best "Creative " Solution <><><><><>
+goes_after = lambda w, f, s: w.index(f)==w.index(s)-1 if f in w and s in w else False
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    i = word.find(first)
+    return i >= 0 and word.find(second) == i+1
+
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+def goes_after(word: str, first: str, second: str) -> bool:
+    if first not in word or second not in word or first == second:
+        return False
+    temp = ""
+    for i, v in enumerate(word):
+        if (v == first and i == len(word)-1) or (v == second and i == 0):
+            return False
+        if v == first and word[i+1] != second:
+            return False
+        if v == second and temp == first:
+            return True
+        else:
+            temp = v
+    return False
 
 # ___________________________________________________________________________________
 # MISSION 28. 
