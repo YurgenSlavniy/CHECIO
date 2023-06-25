@@ -1626,6 +1626,16 @@ def follow(instructions: str) -> tuple[int, int] | list[int]:
 
 # ___________________________________________________________________________________
 # SOLUTION 19. <>
+def most_frequent(data: list[str]) -> str:
+    return max(set(data), key=data.count)
+    
+print("Example:")
+print(most_frequent(["a", "b", "c", "a", "b", "a"]))
+
+# These "asserts" are used for self-checking
+assert most_frequent(["a", "b", "c", "a", "b", "a"]) == "a"
+assert most_frequent(["a", "a", "bi", "bi", "bi"]) == "bi"
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
@@ -1645,6 +1655,49 @@ def follow(instructions: str) -> tuple[int, int] | list[int]:
 
 # ___________________________________________________________________________________
 # SOLUTION 20. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+
+# ___________________________________________________________________________________
+# MISSION 21. 
+# Compress List >< 
+# "Compress" a given list ? 
+# Elementary+ <>
+# list --
+# ___________________________________________________________________________________
+# Elementary+
+# English FR PL UK
+
+# A given sequence should be "compressed" in a way so, instead of two (or more) equal elements, 
+# staying one after another, there should be only one in the result sequence.
+
+# example
+
+# Input: List.
+# Output: "Compressed" List or another Iterable (tuple, iterator, generator).
+
+# Examples:
+# assert list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])) == [
+#    5,
+#    4,
+#    5,
+#    6,
+#    5,
+#    7,
+#    8,
+#    0,
+#]
+# assert list(compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1])) == [1, 2, 1]
+# assert list(compress([7, 7])) == [7]
+# assert list(compress([])) == []
+# ___________________________________________________________________________________
+# SOLUTION 21. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
