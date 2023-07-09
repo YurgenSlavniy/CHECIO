@@ -2435,6 +2435,38 @@ assert translate("sooooso aaaaaaaaa") == "sos aaa"
 # ___________________________________________________________________________________
 
 # SOLUTION 28. <> 
+def translate(text: str) -> str:
+    litters = 'aeiouy'
+    translate = []
+    
+    while len(text) != 0:
+        if text[0] not in litters and text[0] != ' ':         
+            translate.append(text[0])
+            text = text[2:]         
+        elif text[0] in litters:
+            translate.append(text[0])
+            text = text[3:]           
+        else:
+            translate.append(text[0])
+            text = text[1:]
+            
+    result = ''
+    for el in translate:
+        result += el
+    
+    return result
+
+
+print("Example:")
+print(translate("hieeelalaooo"))
+
+# These "asserts" are used for self-checking
+assert translate("hieeelalaooo") == "hello"
+assert translate("hoooowe yyyooouuu duoooiiine") == "how you doin"
+assert translate("aaa bo cy da eee fe") == "a b c d e f"
+assert translate("sooooso aaaaaaaaa") == "sos aaa"
+
+print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
@@ -2444,12 +2476,33 @@ assert translate("sooooso aaaaaaaaa") == "sos aaa"
 
 # ___________________________________________________________________________________
 # MISSION 29. 
-# ><   
-# ?
-#  <> 
-# --
+# Feed Pigeons ><   
+# Голуби голодны и не знают меры в еде. ?
+# Simple+ <> 
+# Russian has-hints logic math numbers --
 # ___________________________________________________________________________________
-#
+# Simple+
+# EN FR HU JA PL PT-BR Russian UK ZH-HANS
+
+# Я начал кормить одного из голубей. Через минуту прилетело еще два, и еще через минуту прилетело еще три голубя. 
+# Затем 4 и так далее (Пр: 1+2+3+4+...). Одной порции корма хватает одному голубю на минуту. 
+# В случае если еды не хватает на всех птиц, то сначала едят те голуби, что прилетели ранее. 
+# Голуби - это вечно голодные птицы и они будут есть и есть без остановки. 
+# Если у меня есть N порций корма, то сколько голубей я смогу покормить хотя бы по разу?
+
+# Входные данные: Количество порций корма, как целое число (int).
+# Выходные данные: Количество накормленных голубей, как целое число (int).
+
+# Примеры:
+assert checkio(1) == 1
+assert checkio(3) == 2
+assert checkio(5) == 3
+assert checkio(10) == 6
+
+# Как это используется: В этой задаче мы видим, как можно использовать программирование для моделирования ситуаций. 
+# Конечно, любая модель имеет свои ограничения и приближения, но чаще всего нам и не нужна идеальная модель.
+
+# Предусловия: 0 < N < 105.
 # ___________________________________________________________________________________
 
 # SOLUTION 29. <> 
@@ -2458,3 +2511,22 @@ assert translate("sooooso aaaaaaaaa") == "sos aaa"
 # <><><><><> Best "Creative " Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
 # <><><><><> Best "Uncategorized" Solution <><><><><>
+
+
+# ___________________________________________________________________________________
+# MISSION 30. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 30. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
