@@ -1741,7 +1741,107 @@ def most_frequent(data: list[str]) -> str:
 # assert list(compress([])) == []
 # ___________________________________________________________________________________
 # SOLUTION 21. <>
+from collections.abc import Iterable
 
+def compress(items: list[int]) -> Iterable[int]:
+    compr_list = []
+    
+    if len(items) == 0:
+        return []
+    else:    
+        while len(items) != 1:
+            if items[0] == items[1]:
+                items = items[1:]
+                print('one', items, compr_list)
+            else:
+                compr_list.append(items[0]) 
+                items = items[1:]      
+                print('Two', items, compr_list)
+    compr_list.append(items[0])
+    return compr_list
+    
+print("Example:")
+print(list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])))
+
+# These "asserts" are used for self-checking
+assert list(compress([5, 5, 5, 4, 5, 6, 6, 5, 5, 7, 8, 0, 0])) == [
+    5,
+    4,
+    5,
+    6,
+    5,
+    7,
+    8,
+    0,
+]
+assert list(compress([1, 1, 1, 1, 2, 2, 2, 1, 1, 1])) == [1, 2, 1]
+assert list(compress([7, 7])) == [7]
+assert list(compress([])) == []
+assert list(compress([1, 2, 3, 4])) == [1, 2, 3, 4]
+assert list(compress([9, 9, 9, 9, 9, 9, 9])) == [9]
+assert list(compress([9, 9, 9, 9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9])) == [9, 0, 9]
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+
+# ___________________________________________________________________________________
+# MISSION 22. 
+# Remove All After >< 
+# Remove all the elements after the given one from array ? 
+# Elementary <>
+# list numbers --
+# ___________________________________________________________________________________
+# Elementary
+# English FR PL UK
+
+# Not all of the elements are important. 
+# What you need to do here is to remove all of the elements after the given one from sequence.
+
+# example
+# For illustration, we have a sequence [1, 2, 3, 4, 5] 
+# and we need to remove all the elements that go after 3 - which are 4 and 5.
+
+# We have two edge cases here:
+
+# - if a cutting element cannot be found, then the sequence shouldn't be changed;
+# - if the sequence is empty, then it should remains empty.
+
+# Input: List of integers (int).
+# Output: List or other Iterable (tuple, iterator, generator ...) of integers (int).
+
+# Examples:
+
+assert list(remove_all_after([1, 2, 3, 4, 5], 3)) == [1, 2, 3]
+assert list(remove_all_after([1, 1, 2, 2, 3, 3], 2)) == [1, 1, 2]
+assert list(remove_all_after([1, 1, 2, 4, 2, 3, 4], 2)) == [1, 1, 2]
+assert list(remove_all_after([1, 1, 5, 6, 7], 2)) == [1, 1, 5, 6, 7]
+
+# ___________________________________________________________________________________
+# SOLUTION 22. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+
+# ___________________________________________________________________________________
+# MISSION 23. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 23. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
