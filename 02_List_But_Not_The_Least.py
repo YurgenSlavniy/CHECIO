@@ -1782,10 +1782,49 @@ assert list(compress([9, 9, 9, 9, 9, 9, 9])) == [9]
 assert list(compress([9, 9, 9, 9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 9])) == [9, 0, 9]
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from itertools import groupby
+
+def compress(items):
+    for key, _ in groupby(items): yield key
+
 # <><><><><> Best "Creative" Solution <><><><><>
+import itertools
+compress = lambda l: (i for i, _ in itertools.groupby(l))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+compress= lambda x: [x[i] for i in range(len(x)) if i==0 or x[i]!=x[i-1]]
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+from typing import Iterable
+
+
+def compress(items: list) -> Iterable:
+
+    if len(items) == 0:
+        return items
+    else:
+        different = (np.diff(items) != 0)
+        different = np.insert(different, 0, -1)
+
+        return list(np.array(items)[different])
+
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def compress(items: list[int]) -> Iterable[int]:
+    if len(items)>0:
+        cur = items[0]
+        result = [items[0]]
+        for item in items:
+            if item != cur:
+                result.append(item)
+                cur = item
+    else: result = []    
+    return result
+
 # ___________________________________________________________________________________
 
 
