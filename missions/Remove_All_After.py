@@ -60,8 +60,47 @@ assert list(remove_all_after([], 0)) == []
 assert list(remove_all_after([7, 7, 7, 7, 7, 7, 7, 7, 7], 7)) == [7]
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def remove_all_after(items: list, border: int) -> list:
+    try:
+        return items[: items.index(border) + 1]
+    except ValueError:
+        return items
+        
 # <><><><><> Best "Creative" Solution <><><><><>
+def remove_all_after(items, border):
+    return items[:items.index(border) + 1 if border in items else None]
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from typing import Iterable, List
+
+
+def remove_all_after(items: List, border: int) -> Iterable:
+    for item in items:
+        yield item
+        if item == border:
+            return
 # <><><><><> Best "3rd party" Solution <><><><><>
+from typing import Iterable
+import numpy as np
+
+def remove_all_after(items: list, border: int) -> Iterable:
+    # your code here
+    return items[:1+np.where(np.array(items)==border)[0][0]] if border in items else items
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def remove_all_after(items: list[int], border: int) -> Iterable[int]:
+    # your code here
+    
+    if len(items) == 0 :
+        return []
+    
+    idx = items.index(border) if border in items else -1
+
+    if idx != -1 :
+        items = items[:(idx + 1)]
+
+    return items
 # ___________________________________________________________________________________
