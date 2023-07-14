@@ -153,10 +153,27 @@ assert correct_capital("CheCkio") == False
 assert correct_capital("CHECKIO") == True
 
 # <><><><><> Best "Clear" Solution <><><><><>
+correct_capital = lambda s: s in {s.upper(), s.lower(), s.capitalize()}
+
 # <><><><><> Best "Creative" Solution <><><><><>
+correct_capital = lambda line: line in (line.capitalize(), line.upper(), line.lower())
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+import re
+from string import ascii_lowercase, ascii_uppercase
+
+_l = rf'[{ascii_lowercase}]'
+_u = rf'[{ascii_uppercase}]'
+incorrect = re.compile(rf'({_l}{_u})|(\b{_u}{{2,}}{_l})')
+
+def correct_capital(line: str) -> bool:
+    return not incorrect.search(line)
+    
 # <><><><><> Uncategorized <><><><><>
+def correct_capital(line: str) -> bool:
+    # your code here
+    return any ([line == line.upper(), line ==line.lower(), line==line[0]+line[1:].lower()])
+
 # ___________________________________________________________________________________
 
 
