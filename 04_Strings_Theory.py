@@ -266,6 +266,20 @@ assert is_all_upper("") == False
 
 # ___________________________________________________________________________________
 # SOLUTION 4. <>
+def is_all_upper(text):
+    if len(text) < 1:
+        return False
+    else:
+        return text.isupper()
+        
+print("Example:")
+print(is_all_upper("ALL UPPER"))
+
+# These "asserts" are used for self-checking
+assert is_all_upper("ALL UPPER") == True
+assert is_all_upper("all lower") == False
+assert is_all_upper("mixed UPPER and lower") == False
+assert is_all_upper("") == False
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
@@ -276,6 +290,43 @@ assert is_all_upper("") == False
 
 # ___________________________________________________________________________________
 # MISSION 5. 
+# Is String a Number? >< 
+# Checks if the string is a valid number ? 
+# Elementary <>
+# numbers string --
+# ___________________________________________________________________________________
+# Elementary
+# English FR PL UK ZH-HANS
+
+# You are given a string. 
+# Your function should return True if the string is a valid number (contains digits only), 
+# otherwise - False. Look at the example.
+
+# example:
+# Input: A string.
+# Output: A boolean.
+
+Examples:
+assert is_number("34") == True
+assert is_number("df") == False
+assert is_number("") == False
+assert is_number("a5") == False
+
+# How it’s used: For checking string values that must contain only digits.
+
+# Precondition: The text contains only letters, digits and whitespace.
+# ___________________________________________________________________________________
+# SOLUTION 5. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 6. 
 #  >< 
 #  ? 
 #  <>
@@ -283,7 +334,25 @@ assert is_all_upper("") == False
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 5. <>
+# SOLUTION 6. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 7. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 7. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
