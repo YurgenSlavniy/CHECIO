@@ -207,6 +207,32 @@ assert long_repeat("ddvvrwwwrggg") == 3
 # ___________________________________________________________________________________
 # SOLUTION 3. <>
 
+def long_repeat(line: str) -> int:
+    max_count = 1
+    count = 1
+   
+    if len(line) == 0:
+        return 0
+    else:
+        while len(line) > 1:
+            if line[0] == line[1]:
+                count += 1
+                line = line[1:]
+                if count > max_count:
+                    max_count = count
+            else:
+                count = 1 
+                line = line[1:]
+            
+    return max_count
+
+
+print("Example:")
+print(long_repeat("sdsffffse"))
+
+assert long_repeat("sdsffffse") == 4
+assert long_repeat("ddvvrwwwrggg") == 3
+
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
@@ -216,6 +242,40 @@ assert long_repeat("ddvvrwwwrggg") == 3
 
 # ___________________________________________________________________________________
 # MISSION 4. 
+# All Upper II >< 
+# Checks if the string is a valid number ? 
+# Elementary <>
+# bool string --
+# ___________________________________________________________________________________
+# Elementary
+# English FR PL UK ZH-HANS
+
+# Check if a given string has all symbols in upper case. 
+# If the string is empty or doesn't have any letter in it - function should return False.
+
+# Input: A string (str).
+# Output: A logic value (bool).
+
+Examples:
+assert is_all_upper("ALL UPPER") == True
+assert is_all_upper("all lower") == False
+assert is_all_upper("mixed UPPER and lower") == False
+assert is_all_upper("") == False
+
+# Precondition: a-z, A-Z, 1-9 and spaces.
+
+# ___________________________________________________________________________________
+# SOLUTION 4. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 5. 
 #  >< 
 #  ? 
 #  <>
@@ -223,7 +283,7 @@ assert long_repeat("ddvvrwwwrggg") == 3
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 4. <>
+# SOLUTION 5. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
