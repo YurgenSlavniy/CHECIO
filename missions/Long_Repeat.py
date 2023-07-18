@@ -53,8 +53,39 @@ assert long_repeat("sdsffffse") == 4
 assert long_repeat("ddvvrwwwrggg") == 3
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from itertools import groupby
+def long_repeat(line):
+    """length the longest substring that consists of the same char"""
+    return max(len(list(g)) for _, g in groupby(line)) if line else 0
+
 # <><><><><> Best "Creative" Solution <><><><><>
+long_repeat=lambda l:len(l)and max(map(len,dict(__import__('re').findall(r'((.)\2*)',l))))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from itertools import groupby
+
+def long_repeat(string):
+    if not string: return 0
+    return max(len(list(g)) for _,g in groupby(string))
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+def long_repeat(line: str) -> int:
+    """
+        length the longest substring that consists of the same char
+    """
+    import numpy as np
+    return max([len(_) for _ in np.split(list(line), [i+1 for i, letter in enumerate(list(line)[:-1]) if list(line)[i] != list(line)[i+1]])])
+
 # <><><><><> Uncategorized <><><><><>
+def long_repeat(line: str) -> int:
+    max_count = 0
+    cur_count = 0
+    for i in range(len(line)):
+        if i == 0 or line[i] != line[i - 1]:
+            cur_count = 1
+        else:
+            cur_count += 1
+        max_count = max(max_count, cur_count)
+    return max_count
+
 # ___________________________________________________________________________________
