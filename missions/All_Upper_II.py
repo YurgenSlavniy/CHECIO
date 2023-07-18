@@ -38,8 +38,19 @@ assert is_all_upper("mixed UPPER and lower") == False
 assert is_all_upper("") == False
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def is_all_upper(text: str) -> bool:
+    return text.isupper()
+
 # <><><><><> Best "Creative" Solution <><><><><>
+is_all_upper = str.isupper
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+import re
+
+def is_all_upper(text: str) -> bool:
+    return True if len(re.findall('[a-z]', text)) == 0 and len(re.findall('[A-Z]', text)) != 0 else  False
+
 # <><><><><> Uncategorized <><><><><>
-# ___________________________________________________________________________________
+def is_all_upper(text: str) -> bool:
+    return text.isupper() if text and any(char.isalpha() for char in text) else False
+
