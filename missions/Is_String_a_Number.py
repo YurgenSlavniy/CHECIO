@@ -41,8 +41,26 @@ assert is_number("ITS A NUMBER") == False
 assert is_number("5a") == False
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def is_number(val: str) -> bool:
+    try:
+        int(val)
+        return isinstance(int(val), int)
+    except ValueError: 
+        return False
+        
 # <><><><><> Best "Creative" Solution <><><><><>
+is_number = str.isdigit
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def is_number(val: str) -> bool:
+    return val.isdecimal()
+    
 # <><><><><> Uncategorized <><><><><>
+def is_number(val: str) -> bool:
+    try:
+        int(val)
+    except ValueError:
+        return False
+    return True
+
 # ___________________________________________________________________________________
