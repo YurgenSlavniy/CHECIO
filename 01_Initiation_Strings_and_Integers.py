@@ -2561,6 +2561,50 @@ assert checkio(10) == 6
 
 # SOLUTION 29. <> 
 
+def checkio(food: int) -> int:
+    welfed_pigons = 0
+    minutes = 0
+    pigons = 1
+    old_pigons = 0
+    new_pigons = 2
+     
+    while food != 0:
+        print(food, pigons, old_pigons, new_pigons, minutes, welfed_pigons)
+        
+        if food / pigons > 1:
+            minutes += 1
+            old_pigons = pigons
+            welfed_pigons = old_pigons
+            food = food - old_pigons
+            pigons = old_pigons + new_pigons
+            new_pigons += 1
+
+            
+        elif food / pigons == 1:
+            welfed_pigons = pigons
+            food = 0
+
+        else:
+            if food < welfed_pigons:
+                return welfed_pigons
+            else:
+                welfed_pigons = welfed_pigons + (food - welfed_pigons)
+                food = 0
+            
+    print(f'сытые голуби {welfed_pigons}, minutes {minutes}')
+    return welfed_pigons
+
+
+print("Example:")
+print(checkio(18))
+
+# These "asserts" are used for self-checking
+assert checkio(1) == 1
+assert checkio(3) == 2
+assert checkio(5) == 3
+assert checkio(10) == 6
+assert checkio(18) == 8
+
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative " Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
@@ -2569,6 +2613,64 @@ assert checkio(10) == 6
 
 # ___________________________________________________________________________________
 # MISSION 30. 
+# Excel Column Number >< 
+# A->1, B->2, AA->27 ? 
+# Simple+ <>
+# math string --
+# ___________________________________________________________________________________
+# Given a string that represents the column title as appears in an Excel sheet, 
+# return its corresponding column number.
+
+# But how does the Excel column numbering actually work? Well, 
+# the column number is like decimal number, but with base (radix) 26 and "digits" A-Z. 
+# Read more about number bases. Let's look at the exact numbers:
+
+# Excel   Decimal
+#    A   1
+#   ..
+#    Z   26
+
+# The 1-"digit" numbers have ended. 2-"digits" numbers start from double first "digit" and go to double last one:
+
+# Excel   Decimal
+#    A   1
+#   ..
+#    Z   26
+#   AA   27
+#   ..
+#   AZ   52
+#   BA   53
+#   ..
+#   BZ   78
+#   CA   79
+#   ..
+#   ..
+#   ZZ   702
+
+# Now it's turn for 3-"digit" numbers...
+
+# Input: A string (str).
+# Output: An integer (int).
+
+# Examples:
+assert column_number("A") == 1
+assert column_number("Z") == 26
+assert column_number("AB") == 28
+assert column_number("ZY") == 701
+
+# Precondition: Non empty, only upper case, only English letters
+# ___________________________________________________________________________________
+# SOLUTION 30. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 31. 
 #  >< 
 #  ? 
 #  <>
@@ -2576,7 +2678,7 @@ assert checkio(10) == 6
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 30. <>
+# SOLUTION 31. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
