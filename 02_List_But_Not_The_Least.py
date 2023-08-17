@@ -1976,6 +1976,23 @@ assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
 # Все элементы в списке являются положительными целыми числами.
 # ___________________________________________________________________________________
 # SOLUTION 23. <>
+def changing_direction(elements: list) -> int:
+    
+    dirs = []
+    for i, j in zip(elements, elements[1:]):
+        if j > i and (not dirs or dirs[-1] == '-'):
+            dirs.append('+')
+        elif j < i and (not dirs or dirs[-1] == '+'):
+            dirs.append('-')
+    
+    return len(dirs) - bool(dirs)
+
+print("Example:")
+print(changing_direction([1, 2, 3, 4, 5]))
+
+assert changing_direction([1, 2, 3, 4, 5]) == 0
+assert changing_direction([1, 2, 3, 2, 1]) == 1
+assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
@@ -1994,6 +2011,24 @@ assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
 
 # ___________________________________________________________________________________
 # SOLUTION 24. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# MISSION 25. 
+#  >< 
+#  ? 
+#  <>
+#  --
+# ___________________________________________________________________________________
+
+# ___________________________________________________________________________________
+# SOLUTION 25. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
