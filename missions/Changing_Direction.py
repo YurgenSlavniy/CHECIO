@@ -54,8 +54,80 @@ assert changing_direction([1, 2, 3, 2, 1]) == 1
 assert changing_direction([1, 2, 2, 1, 2, 2]) == 2
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def changing_direction(elements: list) -> int:
+    dir = count = 0
+    for a, b in zip(elements, elements[1:]):
+        dir2 = a - b
+        if dir2:
+            if dir2 * dir < 0: count += 1
+            dir = dir2
+    return count
+    
 # <><><><><> Best "Creative" Solution <><><><><>
+from itertools import groupby, pairwise, starmap
+from operator import sub
+from typing import Iterable
+
+def changing_direction(directions: Iterable[int]) -> int:
+    nonzero_diffs = filter(None, starmap(sub, pairwise(directions)))
+    signed_groups = groupby(nonzero_diffs, key=lambda x: x > 0)
+    nb_signs = sum(1 for _ in signed_groups)
+    nb_changes = max(0, nb_signs - 1)
+    return nb_changes
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from itertools import pairwise
+def changing_direction(e: list) -> int:
+    return sum(x*y<0 for x,y in pairwise(x-y for x,y in pairwise(e) if x!=y))
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from typing import List
+from numpy import array
+from itertools import groupby
+from scipy.signal import argrelmin, argrelmax
+
+
+def changing_direction(elements: List[int]) -> int:
+
+    # remove consecutive elements to have unique minima and maxima   
+    elements = [value for value, _ in groupby(elements)]
+
+    # convert to numpy array to use agrelmin/max
+    elements = array(elements)
+
+    # find all minima and maxima
+    minima, = argrelmin(elements)
+    maxima, = argrelmax(elements)
+
+    # read amounts
+    num_of_minima, = minima.shape
+    num_of_maxima, = maxima.shape
+
+    return num_of_minima + num_of_maxima
+
 # <><><><><> Uncategorized <><><><><>
+def changing_direction(elements: List[int]) -> int:
+    if len(elements) == 1:
+        return 0
+    number_of_direction_changes = 0
+    previous_integer = elements[0]
+    direction = ""
+    temp_direction = ""
+    for entry in range(1, len(elements)):
+        current_integer = elements[entry]
+        if current_integer == previous_integer:
+            continue
+        elif current_integer < previous_integer:
+            temp_direction = "down"
+        elif current_integer > previous_integer:
+            temp_direction = "up"
+        if direction == "":
+            direction = temp_direction
+        if temp_direction != direction:
+            number_of_direction_changes += 1
+            direction = temp_direction
+        previous_integer = current_integer
+    return number_of_direction_changes
+
+
 # ___________________________________________________________________________________
