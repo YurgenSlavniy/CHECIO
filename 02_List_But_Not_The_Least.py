@@ -2105,6 +2105,16 @@ assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 # all(-100 < x < 100 for x in array)
 # ___________________________________________________________________________________
 # SOLUTION 24. <>
+def checkio(values: list) -> list:
+    return sorted(values, key=abs)
+
+print("Example:")
+print(checkio([-20, -5, 10, 15]))
+
+# These "asserts" are used for self-checking
+assert checkio([-20, -5, 10, 15]) == [-5, 10, 15, -20]
+assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
+assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
@@ -2115,6 +2125,45 @@ assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 
 # ___________________________________________________________________________________
 # MISSION 25. 
+# Words Order >< 
+# Check that the words are given in the correct order ? 
+# Elementary+  <>
+# list string --
+# ___________________________________________________________________________________
+#  Elementary+
+# English FR PL UK ZH-HANS
+
+# You have a text and a sequence of words. 
+# You need to check if the words in sequence appear in the same order as in the given text.
+
+# Cases you should expect while solving this challenge:
+
+# - a word from the sequence is not in the text - your function should return False;
+# - any word can appear more than once in a text - use only the first one;
+# - two words in the given sequence are the same - your function should return False;
+# - the condition is case sensitive, which means 'hi' and 'Hi' are two different words;
+# - the text includes only English letters and spaces.
+
+# Input: Two arguments. The first one is a given text as a string (str), the second is list of words as strings (str).
+# Output: Logic value (bool).
+
+# Examples:
+assert words_order("hi world im here", ["world", "here"]) == True
+assert words_order("hi world im here", ["here", "world"]) == False
+assert words_order("hi world im here", ["world"]) == True
+assert words_order("hi world im here", ["world", "here", "hi"]) == False
+
+# ___________________________________________________________________________________
+# SOLUTION 25. <>
+
+# <><><><><> Best "Clear" Solution <><><><><>
+# <><><><><> Best "Creative" Solution <><><><><>
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+# ___________________________________________________________________________________
+# ___________________________________________________________________________________
+# MISSION 26. 
 #  >< 
 #  ? 
 #  <>
@@ -2122,7 +2171,7 @@ assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
-# SOLUTION 25. <>
+# SOLUTION 26. <>
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
