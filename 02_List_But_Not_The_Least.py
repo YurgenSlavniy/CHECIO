@@ -2117,10 +2117,36 @@ assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
 assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def checkio(numbers_array):
+    """
+    The magic of the key :)
+    """
+    return tuple(sorted(numbers_array, key=abs))
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from functools import partial as c
+checkio=c(sorted,key=abs)
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def checkio(numbers_array):
+    b=sorted(numbers_array, key=lambda x:(abs(x)))
+    return b
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+def checkio(numbers_array):
+    import numpy
+    D=numpy.array(numbers_array)
+    return(D[numpy.argsort(numpy.absolute(D))].tolist()) # also handles absolute value of complex numbers
+    
+
 # <><><><><> Uncategorized <><><><><>
+from collections import OrderedDict
+
+def checkio(numbers):
+    sorted_dict = OrderedDict(sorted({num: abs(num) for num in numbers}.items(), key=lambda x: x[1]))
+    return list(sorted_dict.keys())
+
+
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
