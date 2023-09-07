@@ -2800,6 +2800,18 @@ assert column_number("ZY") == 701
 # Precondition: Non empty, only upper case, only English letters
 # ___________________________________________________________________________________
 # SOLUTION 30. <>
+def column_number(name: str) -> int:
+    return sum((ord(c)-64)*26**n for n, c in enumerate(name[::-1]))
+    
+print("Example:")
+print(column_number("AA"))
+
+# These "asserts" are used for self-checking
+assert column_number("A") == 1
+assert column_number("Z") == 26
+assert column_number("AB") == 28
+assert column_number("ZY") == 701
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
