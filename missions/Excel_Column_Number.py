@@ -60,8 +60,41 @@ assert column_number("ZY") == 701
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def column_number(name: str) -> int:
+    num = 0
+    for l in name:        
+        num = num * 26 + ord(l) - 64 
+    return num
+
 # <><><><><> Best "Creative" Solution <><><><><>
+COLUMNS = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+
+def column_number(name: str) -> int:
+    
+    if len(name) == 1:
+        return COLUMNS.index(name) +1
+    else:
+        recursion = column_number(name[1:])
+
+    return recursion + (COLUMNS.index(name[0])+1)  * len(COLUMNS) ** (len(name)-1)
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def column_number(name: str) -> int:
+    # your code here
+    import string  
+    collector = []
+    for e in range(0, len(name)):        
+        collector.append((string.ascii_uppercase.index(name[e]) + 1)*(26**(len(name) - (e+1))))        
+    return sum(collector)
+
 # <><><><><> Uncategorized <><><><><>
+def ordr(ch):
+    return ord(ch)-64
+def column_number(name: str) -> int:
+    value = 0
+    for i in range(len(name)):
+        value += ordr(name[-1-i]) * pow(26,i)
+    return valu
 # ___________________________________________________________________________________
+
