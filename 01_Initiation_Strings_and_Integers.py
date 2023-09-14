@@ -2892,10 +2892,37 @@ assert checkio(999) == 729
 assert checkio(1000) == 1
 assert checkio(1111) == 1
 # <><><><><> Best "Clear" Solution <><><><><>
+def checkio(number):
+    """
+    Convert into the string and iterate.
+    """
+    res = 1
+    for d in str(number):
+        res *= int(d) if int(d) else 1
+    return res
+    
 # <><><><><> Best "Creative" Solution <><><><><>
+checkio = lambda n: eval("*".join(i for i in str(n) if i != '0'))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def checkio(number):
+    total = 1
+    for i in str(number).replace("0",""):
+        total *= int(i)
+    return total
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from numpy import prod
+checkio = lambda number: int(prod( [ int(i) for i in list(str(number)) if i != '0']))
+
 # <><><><><> Uncategorized <><><><><>
+def checkio(number: int) -> int:
+    b = list(map(int,str(number)))
+    result = 1
+    for i in b:
+        if i:
+            result *= i        
+    return result
 # ___________________________________________________________________________________
 
 # ___________________________________________________________________________________
