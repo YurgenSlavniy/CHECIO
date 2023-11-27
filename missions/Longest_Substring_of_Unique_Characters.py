@@ -92,3 +92,76 @@ assert longest_substr("abcdef") == 6
 assert longest_substr("") == 0
 assert longest_substr("au") == 2
 assert longest_substr("dvdf") == 3
+
+# <><><><><> Best "Clear" Solution <><><><><>
+def longest_substr(s: str) -> int:
+    
+    start = res = 0
+    chars = {}
+    for ind, char in enumerate(s):
+        if char in chars:
+            start = max(start, chars[char] + 1)
+        chars[char] = ind
+        res = max(res, ind - start + 1)
+
+    return res
+
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def longest_substr(s: str) -> int:
+    count = 0
+    substr = ''
+    for i in s:
+        if i not in substr:
+            substr += i
+        else:
+            if count < len(substr):
+                count = len(substr)
+            substr = substr[substr.index(i)+1:]*(substr.index(i)!=-1)+i
+    return max(len(substr), count)
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def longest_substr(s: str) -> int:
+    
+    start = res = 0
+    chars = {}
+    for ind, char in enumerate(s):
+        if char in chars:
+            start = max(start, chars[char] + 1)
+        chars[char] = ind
+        res = max(res, ind - start + 1)
+        
+    return res
+
+# <><><><><> Uncategorized <><><><><>
+
+def slices(data: str) -> list:
+    """
+    returns a list with all possible combinations of
+    non-repeated substrings
+    """
+    temp = ""
+    
+    if len(data) == len(set(data)):
+        return [data]
+
+    for i in data:
+        if i not in temp:
+            temp += i
+        else:
+            result = slices(data[1:])
+            result.append(temp)
+            print(temp)
+            return result
+
+def longest_substr(line: list) -> str:
+    """
+    the longest substring without repeating chars
+    """
+    result = slices(line)
+    print(result)
+    result.reverse()
+    
+    return len(max(result, key=len))
+
+# ___________________________________________________________________________________
