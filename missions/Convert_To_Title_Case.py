@@ -55,3 +55,43 @@ assert to_title_case("the answer is 42") == "The Answer Is 42"
 assert to_title_case("to be or not to be") == "To Be Or Not To Be"
 assert to_title_case("that is the question") == "That Is The Question"
 assert to_title_case("") == ""
+
+# <><><><><> Best "Clear" Solution <><><><><>
+def to_title_case(sentence: str) -> str:
+    return sentence.title()
+
+# <><><><><> Best "Creative" Solution <><><><><>
+def to_title_case(sentence: str) -> str:
+    if sentence == "":
+        return ""
+    sentence1 = sentence.lower()
+    temp = sentence1.split(" ")
+    new_list = []
+    for item in temp:
+        new_list.append(item[0].upper() + item[1:])
+        new_list.append(" ")
+    final = "".join(new_list)
+    return final[:len(final)-1]
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+def to_title_case(sentence: str) -> str:
+    if sentence:
+        return sentence.title()
+    return ""
+
+# <><><><><> Uncategorized <><><><><>
+
+def to_title_case(sentence: str) -> str:
+    words = sentence.split()
+
+    title_words = []
+
+    for word in words:
+        title_word = word[0].upper() + word[1:].lower()
+        title_words.append(title_word)
+
+    title_string = " ".join(title_words)
+
+    return title_string
+
+# ___________________________________________________________________________________
