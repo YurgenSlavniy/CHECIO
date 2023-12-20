@@ -72,3 +72,44 @@ assert longest_prefix(["alphabet", "alpha", "alphadog"]) == "alpha"
 assert longest_prefix(["book", "boot", "booster"]) == "boo"
 assert longest_prefix(["short", "shore", "shot"]) == "sho"
 
+# <><><><><> Best "Clear" Solution <><><><><>
+import itertools as it
+
+all_equal = lambda x: len(set(x)) == 1
+
+def longest_prefix(arr: list[str]) -> str:
+    return ''.join(x[0] for x in it.takewhile(all_equal, zip(*arr)))
+    
+# <><><><><> Best "Creative" Solution <><><><><>
+def longest_prefix(arr: list[str]) -> str:
+    prefix=[]
+    for litery in zip(*arr):
+        if len(set(litery))==1:
+            prefix+=list(set(litery))
+    return "".join(prefix)
+
+# <><><><><> Best "Speedy" Solution <><><><><>
+# <><><><><> Best "3rd party" Solution <><><><><>
+# <><><><><> Uncategorized <><><><><>
+
+def longest_prefix(arr: list[str]) -> str:
+
+    if any(element == "" for element in arr):
+        return ""
+    if len(arr) == 1:
+        return arr[0]
+
+    n = len(sorted(arr, key=len)[0])
+    common_prefix = ""
+    char_collector = set()
+
+    for step in range(n):
+        for word in arr:
+            char_collector.add(word[step])
+        if len(char_collector) == 1:
+            common_prefix += char_collector.pop()
+            char_collector = set()
+        else:
+            break
+    return common_prefix
+
