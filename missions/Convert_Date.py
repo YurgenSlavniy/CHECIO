@@ -35,7 +35,6 @@ assert convert_date("29/02/2020") == "2020-02-29"
 #    the input should match the pattern: dd/mm/yyyy, where 01 ≤ dd ≤ 31, 01 ≤ mm ≤ 12, and 1900 ≤ yyyy ≤ 2100.
 ________________________________________________________________________________
 # SOLUTION <>
-
 import datetime
 
 def convert_date(date: str) -> str:
@@ -64,3 +63,56 @@ assert convert_date("02/09/1999") == "1999-09-02"
 assert convert_date("30/04/1975") == "1975-04-30"
 assert convert_date("29/02/2019") == "Error: Invalid date."
 assert convert_date("30/04/1975/1") == "Error: Invalid date."
+
+# <><><><><> Best "Clear" Solution <><><><><>
+import datetime as dt
+
+def convert_date(date: str) -> str:
+    date_list = date.split('/')
+    if len(date_list) != 3:
+        return "Error: Invalid date."
+    else:
+        try: 
+            d = dt.date(int(date_list[2]), int(date_list[1]), int(date_list[0]))
+            return d.strftime('%Y-%m-%d')
+        except:
+            return "Error: Invalid date."
+            
+# <><><><><> Best "Creative" Solution <><><><><>
+import datetime
+def convert_date(date: str) -> str:
+    try:
+        date_obj = datetime.datetime.strptime(date, '%d/%m/%Y')
+        return date_obj.strftime('%Y-%m-%d')
+    except:
+        return "Error: Invalid date."
+        
+# <><><><><> Best "Speedy" Solution <><><><><>
+import datetime
+
+def convert_date(date: str) -> str:
+    try:
+        return datetime.datetime.strptime(date, "%d/%m/%Y").strftime("%Y-%m-%d")  
+    except ValueError:
+        return "Error: Invalid date."
+
+# <><><><><> Uncategorized <><><><><>
+import re
+
+def convert_date(date: str) -> str:
+    
+    if olden_days := re.search(r"^(\d{2})/?(\d{2})/?(\d{4})$", date):
+        day, month, year = map(int, olden_days.groups())
+        match month:
+            case 9 | 4 | 6 | 11: eom = 30
+            case 2: eom = 28
+            case _: eom = 31
+        if year % 4 == 0:
+            eom = 29
+        if not 1 <= day <= eom or not 1 <= month <= 12:
+            return "Error: Invalid date."
+        return f"{year}-{month:02}-{day:02}"
+    else:
+        return "Error: Invalid date."
+
+# ___________________________________________________________________________________
