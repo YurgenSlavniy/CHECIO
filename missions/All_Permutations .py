@@ -140,13 +140,41 @@ assert list(string_permutations("abcd")) == [
 # и возвращаем отсортированный список результатов.
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from collections.abc import Iterable
+from itertools import permutations
 
+
+def string_permutations(s: str) -> Iterable[str]:
+    
+    return sorted(map("".join, permutations(s)))
+    
 # <><><><><> Best "Creative" Solution <><><><><>
+from collections.abc import Iterable
+from itertools import permutations as p
+
+def string_permutations(s: str) -> Iterable[str]:
+    return sorted([''.join(permutation) for permutation in list(p(list(s)))])
 
 # <><><><><> Best "Speedy" Solution <><><><><>
+from collections.abc import Iterable
+from itertools import permutations
 
-# <><><><><> Best "3rd party" Solution <><><><><>
+def string_permutations(s: str) -> Iterable[str]:
+    
+    return sorted(map(''.join, permutations(s)))
 
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+def string_permutations(s: str) -> Iterable[str]:
+    if len(s) < 2: return [s]
+    all = []
+    for i, char in enumerate(s):
+        remaining_chars = s[:i] + s[i + 1:]
+        for perm in string_permutations(remaining_chars):
+            all.append(char + perm)
+    
+    return sorted(all)
+
 
 # ___________________________________________________________________________________
