@@ -38,8 +38,25 @@ def determine_sign(num: int) -> str:
         return "negative"
 
 # <><><><><> Best "Creative" Solution <><><><><>
-
+def determine_sign(num: int) -> str:
+    d = {1: "positive", 0: "zero", -1: "negative"}
+    
+    return d.get((num > 0) - (num < 0), "zero")
 
 # <><><><><> Clear solution <><><><><>
+def determine_sign(num: int) -> str:
+    return "zero" * int(num == 0) + "positive" * int(num > 0) + "negative" * int(num < 0)
+# <><><><><> Best "Speedy" Solution <><><><><>
+def determine_sign(num: int) -> str:
+    return 'positive' if num > 0 else 'negative' if num < 0 else 'zero'
+ 
+# <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+def determine_sign(num: int) -> str:
+    
+    return ["negative","zero", "positive"][np.sign(num)+1]
+
 
 # <><><><><> Uncategorized solution <><><><><>
+determine_sign = lambda x: 'positive' if x>0 else ('negative' if x<0 else 'zero')
