@@ -29,8 +29,20 @@ def find_remainder(dividend: int, divisor: int) -> int:
     return dividend%divisor
   
 # <><><><><> Best "Clear" Solution <><><><><>
+
+def find_remainder(dividend: int, divisor: int) -> int:
+    if divisor != 0:
+        remainder = dividend%divisor
+        return remainder
+    else:
+        raise ValueError("Cannot divide by zero")
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy
+
+find_remainder = numpy.mod
 # <><><><><> Uncategorized <><><><><>
 # ___________________________________________________________________________________
