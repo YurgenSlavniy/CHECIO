@@ -26,10 +26,22 @@ assert sum_upto_n(4) == 10
 
 # ___________________________________________________________________________________
 # SOLUTION <>
+import math
 
+def sum_upto_n(N: int) -> int:
+    return sum(range(1,N+1))
+  
 # <><><><><> Best "Clear" Solution <><><><><>
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+
+
 # <><><><><> Uncategorized <><><><><>
 # ___________________________________________________________________________________
