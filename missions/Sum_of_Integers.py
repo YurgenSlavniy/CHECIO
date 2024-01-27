@@ -32,16 +32,19 @@ def sum_upto_n(N: int) -> int:
     return sum(range(1,N+1))
   
 # <><><><><> Best "Clear" Solution <><><><><>
-
-
-# <><><><><> Best "Creative" Solution <><><><><>
-
+def sum_upto_n(N: int) -> int:
+    return N*(N+1)//2
 
 # <><><><><> Best "Speedy" Solution <><><><><>
-
-
-# <><><><><> Best "3rd party" Solution <><><><><>
-
+def sum_upto_n(N: int) -> int:
+    return sum([i for i in range(1, N+1)])
 
 # <><><><><> Uncategorized <><><><><>
+
+def sum_upto_n(N: int) -> int:
+    liczba = 0
+    for i in range(1,N+1):
+        liczba += i
+    return liczba
+
 # ___________________________________________________________________________________
