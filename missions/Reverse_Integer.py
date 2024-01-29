@@ -54,8 +54,27 @@ assert reverse_digits(987654321) == 123456789
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def reverse_digits(num: int) -> int:
+    
+    return int(''.join(reversed(str(num)))) if num >= 0 else -int(''.join(reversed(str(-num))))
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def reverse_digits(num: int) -> int:
+    return int(('-' if num < 0 else '') + ''.join(reversed(str(num))).replace('-', ''))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def reverse_digits(num: int) -> int:
+    if num <= 0:
+        return int(f"-{str(abs(num))[::-1]}")
+    else:
+        return int(str(num)[::-1])
+    return 0
+
 # <><><><><> Uncategorized <><><><><>
+def reverse_digits(num: int) -> int:
+    if num < 0:
+        return -(int(str(abs(num))[::-1]))
+    return int(str(num)[::-1])
+
+
 # ___________________________________________________________________________________
