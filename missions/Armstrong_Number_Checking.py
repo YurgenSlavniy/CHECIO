@@ -47,9 +47,34 @@ assert is_armstrong(100) == False
 assert is_armstrong(8208) == True
 assert is_armstrong(930) == False
 assert is_armstrong(4) == True
+
 # <><><><><> Best "Clear" Solution <><><><><>
+def is_armstrong(num: int) -> bool:
+    
+    temp, digits, count = num,  [], 0
+    while temp:
+        temp, digit = divmod(temp, 10)
+        digits.append(digit)
+        count += 1
+
+    return sum(d**count for d in digits) == num
+
 # <><><><><> Best "Creative" Solution <><><><><>
+is_armstrong = lambda num: num == sum(map(lambda x: x**len(str(num)),map(int,str(num))))
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def is_armstrong(num: int) -> bool:
+    return sum([int(i)**len(str(num)) for i in str(num)]) == num
+
 # <><><><><> Uncategorized <><><><><>
+def is_armstrong(num: int) -> bool:
+    # your code here
+    text = str(num)
+    l = len(text)
+    res = 0
+    for digit in text:
+        res += int(digit) ** l
+        
+    return res == num
+
 # ___________________________________________________________________________________
