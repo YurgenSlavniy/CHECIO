@@ -27,6 +27,30 @@ assert is_leap_year(2100) == False
 # - 1 <= year <= 105
 # ___________________________________________________________________________________
 # SOLUTION <>
+def is_leap_year(year: int) -> bool:
+    if year % 4 != 0:
+        return False
+    elif year % 100 != 0:
+        return True
+    elif year % 400 != 0:
+        return False
+    else:
+        return True 
+
+print("Example:")
+print(is_leap_year(1891))
+
+# These "asserts" are used for self-checking
+assert is_leap_year(2000) == True
+assert is_leap_year(1900) == False
+assert is_leap_year(2004) == True
+assert is_leap_year(2100) == False
+assert is_leap_year(2020) == True
+assert is_leap_year(2021) == False
+assert is_leap_year(1600) == True
+assert is_leap_year(1700) == False
+assert is_leap_year(1800) == False
+assert is_leap_year(2400) == True
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
