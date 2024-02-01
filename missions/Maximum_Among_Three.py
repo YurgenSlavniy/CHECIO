@@ -46,8 +46,33 @@ assert max_of_three(123, 456, 789) == 789
 assert max_of_three(789, 123, 456) == 789
 
 # <><><><><> Best "Clear" Solution <><><><><>
+# Using the built-in function max instead of making a new one.
+max_of_three = max
+
 # <><><><><> Best "Creative" Solution <><><><><>
-# <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def max_of_three(a: int, b: int, c: int) -> int:
+    # your code here
+    return max(a,b,c)
+
 # <><><><><> Uncategorized <><><><><>
+def max_of_three(a: int, b: int, c: int) -> int:
+    # your code here
+    arr = [a, b, c]
+    iterator = iter(arr)
+    max_val = None
+    try:
+        while True:
+            temp = next(iterator)
+            if max_val is None:
+                max_val = temp
+            elif max_val < temp:
+                max_val = temp
+            elif max_val > temp:
+                continue
+            else:
+                raise StopIteration
+    except StopIteration:
+        return max_val
+
+
 # ___________________________________________________________________________________
