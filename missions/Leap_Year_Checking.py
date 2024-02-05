@@ -53,8 +53,24 @@ assert is_leap_year(1800) == False
 assert is_leap_year(2400) == True
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from calendar import isleap as is_leap_year
+
+print("Example:")
+print(is_leap_year(1891))
 # <><><><><> Best "Creative" Solution <><><><><>
+def is_leap_year(year: int) -> bool:
+    return not year % 4 and (not year % 400 if not year % 100 else True)
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def is_leap_year(year: int) -> bool:
+    return year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)
+    
 # <><><><><> Uncategorized <><><><><>
+
+def is_leap_year(year: int) -> bool:
+
+    if year % 4!= 0: return False
+    if year % 100!= 0: return True
+    return year % 400 == 0
+
 # ___________________________________________________________________________________
