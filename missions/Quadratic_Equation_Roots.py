@@ -72,8 +72,68 @@ assert list(quadratic_roots(2, -7, 6)) == [2, 1.5]
 assert list(quadratic_roots(2, -3, 1)) == [1, 0.5]
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from collections.abc import Iterable
+
+
+def quadratic_roots(a: int, b: int, c: int):
+    det = b*b - 4*a*c
+    return ['No real roots'] if det < 0 else [(-b + det**0.5)/2/a, (-b - det**0.5)/2/a]
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from collections.abc import Iterable
+from math import sqrt
+
+
+def quadratic_roots(a: int, b: int, c: int) -> Iterable[int | str]:
+    d = (b**2) - 4 * a * c
+    return ["No real roots"] if d < 0 else [((-b) + sqrt(d)) / (2 * a), ((-b) - sqrt(d)) / (2 * a)]
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from collections.abc import Iterable
+from typing import Union
+
+
+def quadratic_roots(a: int, b: int, c: int) -> Iterable[Union[int | float] | str]:
+
+    return [(-b+(b**2-4*a*c)**0.5)/(2 * a), (-b-(b**2-4*a*c)**0.5)/(2 * a)] if (b ** 2 - 4 * a * c) >= 0 else ["No real roots"]
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from collections.abc import Iterable
+import numpy as np
+
+
+def quadratic_roots(a: int, b: int, c: int) -> Iterable[int | str]:
+    d = b**2-4*a*c
+    if d > 0:
+         return [int(-1 * b + np.sqrt(d))/(2*a), int(-1*b - np.sqrt(d))/(2*a)]
+    elif d == 0:
+         return [-1*b//(2*a)]*2
+    else:
+         return ['No real roots']
+
 # <><><><><> Uncategorized <><><><><>
+ Quadratic Equation Roots
+magi 2023-2025
+
+11 Maciej_Biegaj
+[Follow]
+from collections.abc import Iterable
+from typing import Union
+from math import sqrt
+
+def quadratic_roots(a: int, b: int, c: int) -> Iterable[Union[int | float] | str]:
+    disc = b**2 - 4*a*c
+    if disc > 0:
+        x1 = (-b + sqrt(disc)) / (2*a)
+        x2 = (-b - sqrt(disc)) / (2*a)
+        return sorted([x1, x2], reverse=True)
+    elif disc == 0:
+        x = -b / (2*a)
+        return [x, x]
+    else:
+        return ['No real roots']
+    return []
+
+
 # ___________________________________________________________________________________
