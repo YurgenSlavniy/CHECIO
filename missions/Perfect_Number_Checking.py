@@ -54,8 +54,50 @@ assert is_perfect(1000) == False
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def is_perfect(n: int) -> bool:
+    
+    divisors = {1}
+    for i in range(2, int(n**0.5) + 1):
+        quot, rem = divmod(n, i)
+        if not rem:
+            divisors |= {quot, i}
+
+    return sum(divisors) == n
+    
 # <><><><><> Best "Creative" Solution <><><><><>
+def is_perfect(n: int) -> bool:
+    return n == sum([i for i in range(1, n) if not n % i])
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def is_perfect(n: int) -> bool:
+    divisors = []
+    for i in range(1, n):
+        if n % i == 0:
+            divisors.append(i)
+    if sum(divisors) == n:
+        return True
+    return False
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from sympy import divisors
+
+def is_perfect(n: int) -> bool:
+    return sum([i for i in divisors(n) if i != n]) == n
+
+
 # <><><><><> Uncategorized <><><><><>
+def is_perfect(n):
+    if n <= 1:
+        return False
+
+    divisors_sum = 1  
+
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            divisors_sum += i
+            if i != n // i:  
+                divisors_sum += n // i
+
+    return divisors_sum == n
+
 # ___________________________________________________________________________________
