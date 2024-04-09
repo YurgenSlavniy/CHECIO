@@ -44,8 +44,18 @@ assert count_divisible(60, 8) == 7
 assert count_divisible(70, 9) == 7
 
 # <><><><><> Best "Clear" Solution <><><><><>
+import math
+def count_divisible(n: int, k: int) -> int:
+    # your code here
+    return math.trunc(n/k)
+
 # <><><><><> Best "Creative" Solution <><><><><>
-# <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def count_divisible(n: int, k: int) -> int:
+    return n / 2 if k == 2 else 1 if n == k else sum([1 if i % k == 0 else 0 for i in range(1, n + 1)])
+
 # <><><><><> Uncategorized <><><><><>
+def count_divisible(n: int, k: int) -> int:
+
+    return int(n/k)
+
 # ___________________________________________________________________________________
