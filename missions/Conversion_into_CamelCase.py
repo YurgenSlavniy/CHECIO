@@ -25,6 +25,17 @@ assert to_camel_case("i_phone") == "IPhone"
 # Во входящих данных не будет чисел или пустых строк 
 # ___________________________________________________________________________________
 # SOLUTION <>
+def to_camel_case(name: str) -> str:
+    split = name.split('_')
+    split = [item.capitalize() for item in split]
+    return ''.join(split)
+        
+print("Example:")
+print(to_camel_case("my_function_name"))
+
+# These "asserts" are used for self-checking
+assert to_camel_case("my_function_name") == "MyFunctionName"
+assert to_camel_case("i_phone") == "IPhone"
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
