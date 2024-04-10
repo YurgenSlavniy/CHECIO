@@ -26,6 +26,21 @@ assert from_camel_case("IPhone") == "i_phone"
 # Во входящих данных не будет чисел или пустых строк
 # ___________________________________________________________________________________
 # SOLUTION <>
+def from_camel_case(name: str) -> str:
+    result = []
+    result.append(name[0].lower())
+    for el in name[1:]:
+        if el.isupper():
+            result.append('_')
+            result.append(el.lower())
+        else:
+            result.append(el)
+    
+    return ''.join(result)
+
+
+print("Example:")
+print(from_camel_case("MyFunctionName"))
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
