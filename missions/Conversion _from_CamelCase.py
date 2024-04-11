@@ -42,9 +42,34 @@ def from_camel_case(name: str) -> str:
 print("Example:")
 print(from_camel_case("MyFunctionName"))
 
+
 # <><><><><> Best "Clear" Solution <><><><><>
+import re
+
+def from_CamelCase(name):
+    return '_'.join(re.findall('([A-Z][^A-Z]*)', name)).lower()
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+import re; from_camel_case = lambda t: re.sub("([A-Z])", r"_\1", t).lower().lstrip('_')
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+import re
+
+def from_camel_case(name):
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', name).lower()
+
+
 # <><><><><> Uncategorized <><><><><>
+def from_camel_case(name):
+    result = [name[0].lower()]
+    for char in name[1:]:
+        if char.isupper():
+            result.extend(['_', char.lower()])
+        else:
+            result.append(char)
+    return ''.join(result)
+
+
 # ___________________________________________________________________________________
