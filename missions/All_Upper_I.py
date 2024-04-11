@@ -81,7 +81,6 @@ def is_all_upper(text):
 
 
 # <><><><><> Uncategorized <><><><><>
-
 def is_all_upper(text: str) -> bool:
     # ascii code Z => 90
     char_list = list(text)
