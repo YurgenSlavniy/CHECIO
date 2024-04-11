@@ -37,9 +37,34 @@ print(to_camel_case("my_function_name"))
 assert to_camel_case("my_function_name") == "MyFunctionName"
 assert to_camel_case("i_phone") == "IPhone"
 
+
 # <><><><><> Best "Clear" Solution <><><><><>
+def to_camel_case(name):
+    return name.title().replace('_', '')
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+to_camel_case = lambda n: __import__("re").sub('\_\w', lambda m: m.group(0)[1].upper(), n.title())
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def to_camel_case(name, sep='_'):
+    ans, flag = [], True
+    for letter in name.lower():
+        if letter == sep:
+            flag = True
+            continue
+        ans.append(letter.upper() if flag else letter)
+        flag = False
+    return ''.join(ans)
+
+
 # <><><><><> Uncategorized <><><><><>
+def to_camel_case(name: str) -> str:
+    cc = ''
+    for i in name.split('_'):
+        cc += i.capitalize()
+    return cc
+
+
 # ___________________________________________________________________________________
