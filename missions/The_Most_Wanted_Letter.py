@@ -1,6 +1,6 @@
 # The Most Wanted Letter >< 
 # Find out which is the most wanted letter ? 
-#  Elementary+ <>
+# Elementary+ <>
 # Русский has-hints statistics string --
 # ___________________________________________________________________________________
 # Elementary+
@@ -37,7 +37,30 @@ assert checkio("Oops!") == "o"
 # 0 < len(text) ≤ 105  
 # ___________________________________________________________________________________
 # SOLUTION <>
+def checkio(text: str) -> str:
+    text = text.lower()
+    litters = []
+    for el in text:
+        if el.isalpha():
+            litters.append(el)
+    litters_sort_set = sorted(set(litters))   
+    litters_count = {}
+    for el in litters_sort_set:
+        litters_count[el] = text.count(el)
+       
+    return max(litters_count, key=litters_count.get)
+        
 
+print("Example:")
+print(checkio("Hello World!"))
+
+# These "asserts" are used for self-checking
+assert checkio("Hello World!") == "l"
+assert checkio("How do you do?") == "o"
+assert checkio("One") == "e"
+assert checkio("Oops!") == "o"
+assert checkio("AAaooo!!!!") == "a"
+assert checkio("abe") == "a"
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
