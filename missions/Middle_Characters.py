@@ -25,6 +25,19 @@ assert middle("test") == "es"
 # Предусловие: 1 <= длина строки <= 100/
 # ___________________________________________________________________________________
 # SOLUTION <>
+def middle(text: str) -> str:
+    if len(text) %2 == 0:        
+        return text[int((len(text)/2)-1):int((len(text)/2)+1)]
+    else:
+        return text[int(len(text)/2)]
+        
+        
+print("Example:")
+print(middle("example"))
+
+assert middle("example") == "m"
+assert middle("test") == "es"
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
