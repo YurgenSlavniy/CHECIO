@@ -61,9 +61,48 @@ assert checkio("One") == "e"
 assert checkio("Oops!") == "o"
 assert checkio("AAaooo!!!!") == "a"
 assert checkio("abe") == "a"
+
+
 # <><><><><> Best "Clear" Solution <><><><><>
+import string
+
+def checkio(text):
+    """
+    We iterate through latyn alphabet and count each letter in the text.
+    Then 'max' selects the most frequent letter.
+    For the case when we have several equal letter,
+    'max' selects the first from they.
+    """
+    text = text.lower()
+    return max(string.ascii_lowercase, key=text.count)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+checkio=lambda t:max('abcdefghijklmnopqrstuvwxyz',key=t.lower().count)
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+checkio=lambda t:max(map(chr,range(97,123)),key=t.lower().count)
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+def checkio(text):
+    uniq, cnts = np.unique(np.array([ch for ch in text.lower() if ch.isalpha()]), return_counts=1)
+    return min(list(zip(uniq, cnts)), key=lambda x: (-x[1], x[0]))[0]
+
+
 # <><><><><> Uncategorized <><><><><>
+from collections import Counter
+from string import ascii_letters
+from operator import itemgetter
+
+def checkio(text):
+    letters = [x.lower() for x in text if x in ascii_letters]
+    letter_count = Counter(letters)
+    letter_count = sorted(letter_count.items(), key=itemgetter(0))
+    return sorted(letter_count, key=itemgetter(1), reverse=True)[0][0]
+
+
 # ___________________________________________________________________________________
