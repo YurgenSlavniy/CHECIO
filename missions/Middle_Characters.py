@@ -40,8 +40,30 @@ assert middle("test") == "es"
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def middle(text):
+    n = len(text) // 2 + 1
+    return text[-n:n]
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def middle(text):
+    n = len(text) // 2
+    return text[~n:n+1]
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def middle(text):
+    #replace this for solution
+    return (text[(len(text)-1)//2:(len(text)-1)//2*-1] or text)
+
+
 # <><><><><> Uncategorized <><><><><>
+def middle(text: str) -> str:
+
+    ind, rem = divmod(len(text), 2)
+    result = text[ind+rem-1: ind+1]
+        
+    return result
+
+
 # ___________________________________________________________________________________
