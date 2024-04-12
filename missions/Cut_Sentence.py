@@ -40,6 +40,30 @@ assert cut_sentence("Hi my name is Alex", 18) == "Hi my name is Alex"
  
 # ___________________________________________________________________________________
 # SOLUTION <>
+def cut_sentence(line: str, length: int) -> str:
+    if len(line) <= length:
+        return line
+    else:
+        new_line = line[:length]
+        split_line = line.split(' ')
+        new_line_split = new_line.split(' ')
+        result_line = []
+        idx = len(new_line_split)
+        for el in range(0, idx):
+            if split_line[el] == new_line_split[el]:
+                result_line.append(split_line[el])
+        
+        return ' '.join(result_line) + '...'
+
+print("Example:")
+print(cut_sentence("Hi my name is Alex", 4))
+
+# These "asserts" are used for self-checking
+assert cut_sentence("Hi my name is Alex", 8) == "Hi my..."
+assert cut_sentence("Hi my name is Alex", 4) == "Hi..."
+assert cut_sentence("Hi my name is Alex", 20) == "Hi my name is Alex"
+assert cut_sentence("Hi my name is Alex", 18) == "Hi my name is Alex"
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
