@@ -25,6 +25,27 @@ assert list(chunking_by([], 3)) == []
 # Precondition: chunk-size > 0
 # ___________________________________________________________________________________
 # SOLUTION <>
+from typing import Iterable, List
+
+def chunking_by(lst: List, size: int) -> Iterable:
+    if not lst:
+        return
+    
+    for i in range(0, len(lst), size):
+        yield lst[i:i + size]
+        
+
+
+print("Example:")
+print(list(chunking_by([5, 4, 7, 3, 4, 5, 4], 3)))
+
+# These "asserts" are used for self-checking
+assert list(chunking_by([5, 4, 7, 3, 4, 5, 4], 3)) == [[5, 4, 7], [3, 4, 5], [4]]
+assert list(chunking_by([3, 4, 5], 1)) == [[3], [4], [5]]
+assert list(chunking_by([5, 4], 7)) == [[5, 4]]
+assert list(chunking_by([], 3)) == []
+assert list(chunking_by([4, 4, 4, 4], 4)) == [[4, 4, 4, 4]]
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
