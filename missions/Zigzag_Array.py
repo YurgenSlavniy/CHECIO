@@ -49,8 +49,62 @@ assert create_zigzag(3, 3, 5) == [[5, 6, 7], [10, 9, 8], [11, 12, 13]]
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from typing import List
+from itertools import count, islice
+
+def create_zigzag(rows: int, cols: int, start: int = 1) -> List[List[int]]:
+    it = count(start)
+    return [list(islice(it, cols))[::(-1)**row] for row in range(rows)]
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+create_zigzag=lambda r,c,s=1,R=range:[[*R(s+i*c,s+i*c+c)][::1-i%2*2]for i in R(r)]
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from typing import List
+def create_zigzag(rows: int, cols: int, start: int = 1) -> List[List[int]]:
+    numbers=range(start,start+rows*cols)
+    array=[]
+    for row in range(rows):
+        array.append(list(numbers[row*cols:(row+1)*cols]))
+        if row % 2 == 1:
+            array[-1].reverse()
+    return array
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from typing import List
+import numpy as np
+
+def create_zigzag(rows: int, cols: int, start: int = 1) -> List[List[int]]:
+    """ Return list of lists of ints, starting with start, increasing by one,
+        with odd-numbered rows increasing from right to left.
+    """
+    if rows == 0:
+        return []
+    filter_e = np.array([[i % 2 == 0] for i in range(rows)])
+    filter_o = np.invert(filter_e)
+    result_e = np.arange(start, start+rows*cols).reshape(rows, cols)
+    return (result_e * filter_e + np.fliplr(result_e) * filter_o).tolist()
+
+
 # <><><><><> Uncategorized <><><><><>
+def create_zigzag(rows: int, cols: int, start: int = 1):
+    r = 1
+    z = []
+    try:
+        while r < rows + 1:
+            z += [[i for i in range(start, (start + cols))]]
+            start = start + cols
+            r += 1
+        for i in range(len(z)):
+            if i == 0 or i % 2 == 0:
+                pass
+            else:
+                z[i].reverse()
+        return z
+    except ArithmeticError:
+        return z
+
 # ___________________________________________________________________________________
