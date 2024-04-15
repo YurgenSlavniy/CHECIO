@@ -45,6 +45,56 @@ assert sort_by_ext(["1.cad", "1.bat", ".aa", ".bat"]) == [
 
 # ___________________________________________________________________________________
 # SOLUTION <>
+from typing import List
+
+def sort_by_ext(files: list[str]) -> list[str]:
+    
+    #sort by alphabetical order
+    files= sorted (files)
+    #sort by extension
+    files = sorted(files, key = lambda x: x.split('.')[-1] if x.split('.')[-2] != '' else x.split('.')[0])
+    
+    return files
+     
+
+
+print("Example:")
+print(sort_by_ext(["1.cad", "1.bat", "1.aa", "2.bat"]))
+
+# These "asserts" are used for self-checking
+assert sort_by_ext(["1.cad", "1.bat", "1.aa"]) == ["1.aa", "1.bat", "1.cad"]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", "2.bat"]) == [
+    "1.aa",
+    "1.bat",
+    "2.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", ".bat"]) == [
+    ".bat",
+    "1.aa",
+    "1.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.bat", ".aa", ".bat"]) == [
+    ".aa",
+    ".bat",
+    "1.bat",
+    "1.cad",
+]
+assert sort_by_ext(["1.cad", "1.", "1.aa"]) == ["1.", "1.aa", "1.cad"]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", "1.aa.doc"]) == [
+    "1.aa",
+    "1.bat",
+    "1.cad",
+    "1.aa.doc",
+]
+assert sort_by_ext(["1.cad", "1.bat", "1.aa", ".aa.doc"]) == [
+    "1.aa",
+    "1.bat",
+    "1.cad",
+    ".aa.doc",
+]
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
