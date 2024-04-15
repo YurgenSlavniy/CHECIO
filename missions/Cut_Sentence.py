@@ -66,8 +66,48 @@ assert cut_sentence("Hi my name is Alex", 18) == "Hi my name is Alex"
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def cut_sentence(original, width):
+    import textwrap
+    shortened = textwrap.shorten(original, width,
+        placeholder='', break_long_words=False)
+    return shortened + 3*'.'*(shortened<original)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def cut_sentence(string, length, s=__import__('re').search):
+    return s(r'.{,%s}\b' % length, string).group().rstrip()+'...'*(len(string) > length)
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def cut_sentence(line, length):
+    '''
+    Cut a given sentence, so it becomes shorter than or equal to a given length.
+    '''
+    # your code here
+    words = line.split()
+    while words:
+        res = ' '.join(words)
+        if len(res) <= length:
+            return res + '...' if res != line else res
+        else:
+            words.pop()
+    return '...'
+
+
 # <><><><><> Uncategorized <><><><><>
+def cut_sentence(line: str, length: int) -> str:
+    # your code here
+    return ""
+import textwrap
+
+
+def cut_sentence(line: str, length: int) -> str:
+
+    if len(line) <= length:
+        return line
+    else:
+        return textwrap.shorten(line, width=length,
+        placeholder="", break_long_words=False) + "..."
+
+
 # ___________________________________________________________________________________
