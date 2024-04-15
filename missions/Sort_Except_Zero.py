@@ -49,8 +49,56 @@ assert list(except_zero([0, 0])) == [0, 0]
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from typing import Iterable
+
+def except_zero(items: list) -> Iterable:
+    # make iterator for sorted non-zero element
+    it = iter(sorted(e for e in items if e))
+    # insert 0
+    yield from [next(it) if e else 0 for e in items]
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def except_zero(L):
+    s = iter(sorted(filter(None, L)))
+    return [x and next(s) for x in L]
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from typing import Iterable, List
+
+
+def except_zero(items: List[int]) -> Iterable[int]:
+    sorted_non_zeros = sorted((item for item in items if item))
+    i = 0
+    for item in items:
+        if not item:
+            yield 0
+            continue
+        yield sorted_non_zeros[i]
+        i += 1
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy
+
+def except_zero(items):
+    items = numpy.r_[items]
+    items[items != 0] = sorted(items[items != 0])
+    return items
+
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def except_zero(items: list[int]) -> Iterable[int]:
+
+    res = [i for i, v in enumerate(items) if v == 0]
+    res_2 = sorted(filter(lambda x: x> 0, items))
+    for i in res:
+        res_2.insert(i, 0)
+
+    return res_2
+
 # ___________________________________________________________________________________
