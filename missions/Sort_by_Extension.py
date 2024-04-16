@@ -97,8 +97,72 @@ assert sort_by_ext(["1.cad", "1.bat", "1.aa", ".aa.doc"]) == [
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def sort_by_ext(files):
+    skey = lambda s: (bool(s[:(i:=s.rfind('.'))]), s[i+1:], s[:i])
+    return sorted(files,key=skey)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+sort_by_ext=lambda s:sorted(s,key=lambda f:(f[(p:=f.rfind('.')):]*(p>0),f))
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from typing import List, Tuple
+
+
+def extension_and_name(filename: str) -> Tuple[str]:
+    i = filename.rfind('.')
+    if i <= 0:
+        return ('', filename)
+    return (filename[i+1:], filename[:i])
+
+
+def sort_by_ext(files: List[str]) -> List[str]:
+    files.sort(key=extension_and_name)
+    return files
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from typing import List
+import re
+import pandas as pd
+
+def sort_by_ext(files: List[str]) -> List[str]:
+
+    # seems to lack an additional rule: files without name go before files with name
+    # this is because of the following assertion:
+    # assert sort_by_ext(['1.cad', '1.bat', '1.aa', '.bat']) == ['.bat', '1.aa', '1.bat', '1.cad']
+
+    index_no_name = [re.search('\w+\.', f) is None for f in files]
+
+    extensions = [re.search(r'\.[a-z]*$', f).group(0) for f in files]
+
+    name_regex = [re.search('\w+\.', f) for f in files]
+ 
+    names = []
+
+    for n in name_regex:
+        if n is not None:
+            names.append(n.group(0))
+        else:
+            names.append('')
+
+    files_df = pd.DataFrame({'files': files, 'no_name': index_no_name, 'extension': extensions, 'name': names})
+
+    files_df = files_df.sort_values(by = ['no_name', 'extension', 'name'], ascending = [False, True, True])
+
+    return list(files_df['files'])
+
+
 # <><><><><> Uncategorized <><><><><>
+def sort_by_ext(files: list[str]) -> list[str]:
+
+    return sorted(files, key=sort_key)
+        
+def sort_key(file) -> tuple[str, str]:
+        
+    name, dot, ext = file.rpartition(".")
+        
+    return (("", ext), (ext, name))[bool(name)]
+
 # ___________________________________________________________________________________
