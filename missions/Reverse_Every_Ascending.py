@@ -34,6 +34,50 @@ assert list(reverse_ascending([])) == []
 # It’s being taught for Ryerson Chang School of Continuing Education by Ilkka Kokkarinen
 # ___________________________________________________________________________________
 # SOLUTION <>
+from collections.abc import Iterable
+
+
+def reverse_ascending(items: list[int]) -> Iterable[int]:
+    if not items:
+        return []
+
+    result = []
+    ascending_subsequence = [items[0]]
+
+    for i in range(1, len(items)):
+        if items[i] > items[i - 1]:
+            ascending_subsequence.append(items[i])
+        else:
+            result.extend(reversed(ascending_subsequence))
+            ascending_subsequence = [items[i]]
+
+    result.extend(reversed(ascending_subsequence))
+    
+    return result
+
+
+print("Example:")
+print(list(reverse_ascending([1, 2, 3, 4, 5])))
+
+# These "asserts" are used for self-checking
+assert list(reverse_ascending([1, 2, 3, 4, 5])) == [5, 4, 3, 2, 1]
+assert list(reverse_ascending([5, 7, 10, 4, 2, 7, 8, 1, 3])) == [
+    10,
+    7,
+    5,
+    4,
+    8,
+    7,
+    2,
+    3,
+    1,
+]
+assert list(reverse_ascending([5, 4, 3, 2, 1])) == [5, 4, 3, 2, 1]
+assert list(reverse_ascending([])) == []
+assert list(reverse_ascending([1])) == [1]
+assert list(reverse_ascending([1, 1])) == [1, 1]
+assert list(reverse_ascending([1, 1, 2])) == [1, 2, 1]
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
