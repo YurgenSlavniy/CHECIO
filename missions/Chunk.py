@@ -48,8 +48,48 @@ assert list(chunking_by([4, 4, 4, 4], 4)) == [[4, 4, 4, 4]]
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+from typing import Iterable
+
+def chunking_by(items: list, size: int) -> Iterable:
+    return [items[i:i+size] for i in range(0, len(items), size)]
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from typing import Iterable
+
+def chunking_by(items: list, size: int) -> Iterable:
+    return [items[:size]] + chunking_by(items[size:], size) if items else []
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from itertools import chain
+def chunking_by(items, step):
+    temp = zip(chain([0], range(0, len(items), step)), chain(range(0, len(items), step), [None])) 
+    return list(items[i:j] for i, j in temp if items[i:j])
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from typing import Iterable
+import numpy as np
+
+def chunking_by(items: list, size: int) -> Iterable:
+    # your code here
+    return [items[size*i:size*(i+1)] if i < np.ceil(len(items)/size)-1 else items[size*i:] for i in range(int(np.ceil(len(items)/size)))]
+
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def chunking_by(items: list[int], size: int) -> Iterable[list[int]]:
+    if [] in items:
+        return []
+    chunks = []
+    for i in range(0, len(items), size):
+        chunk = items[i:i+size]
+        chunks.append(chunk)
+
+    return chunks
+
+
 # ___________________________________________________________________________________
