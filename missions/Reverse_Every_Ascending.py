@@ -80,8 +80,55 @@ assert list(reverse_ascending([1, 1, 2])) == [1, 2, 1]
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+#to_list = lambda f: lambda *args, **kwargs: list(f(*args, **kwargs))
+
+#@to_list # Outputs doesn't have to be lists in "Check" tests.
+def reverse_ascending(iterable):
+    ascending = []
+    for elem in iterable:
+        if ascending and ascending[-1] >= elem:
+            yield from reversed(ascending)
+            ascending = []
+        ascending.append(elem)
+    yield from reversed(ascending)
+    
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from numpy import split as s, where as w, diff as d
+reverse_ascending = lambda t: sum([list(x)[::-1] for x in s(t, w(d(t) <= 0)[0]+1)], [])
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def reverse_ascending(items):
+    for s in range(1,len(items)): 
+        if items[s] <= items[s-1]:
+            return items[:s][::-1]+reverse_ascending(items[s:])
+    return items[::-1]
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+
+def reverse_ascending(items):
+    new_list = list()
+    
+    result = np.split(items, np.where(np.diff(items) <= 0)[0] + 1)
+    
+    for item in result:
+        new_list.extend(sorted(list(item), reverse=True))
+    
+    return new_list
+
+
 # <><><><><> Uncategorized <><><><><>
+def reverse_ascending(items):
+    result,s = list(),0
+    for e in range(1, len(items)):
+        if items[e-1]>=items[e]:
+            result.extend(sorted(items[s:e], reverse=True))
+            s = e
+    result.extend(sorted(items[s:], reverse=True))
+    return result
+
+
 # ___________________________________________________________________________________
