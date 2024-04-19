@@ -77,8 +77,53 @@ assert list(frequency_sorting([3, 4, 11, 13, 11, 4, 4, 7, 3])) == [
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def checkio(numbers):
+    return sorted(sorted(numbers), key=numbers.count, reverse=True)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def frequency_sorting(numbers):
+    return sorted(numbers, key=lambda a: (-numbers.count(a), a))
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+from collections import Counter
+from typing import List
+
+
+def frequency_sorting(numbers: List[int]) -> List[int]:
+    count = Counter(numbers)
+    numbers.sort(key=lambda x: (-count[x], x))
+    return numbers
+    
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+def frequency_sorting(numbers):
+    
+    n = sorted(numbers)
+    n = {i : n.count(i) for i in n}
+    
+    n_l = sorted(n, key = lambda s: n[s], reverse = True)
+    
+    m = [[i, n[i]] for i in n_l]
+    
+    c = []
+    for i in m:
+        i = list(np.repeat(i[0], i[1]))
+        c.extend(i)
+    return c
+    
+
 # <><><><><> Uncategorized <><><><><>
+
+from collections.abc import Iterable
+
+
+def frequency_sorting(numbers: list[int]) -> Iterable[int]:
+    # replace this for solution
+    lns=[[un]*numbers.count(un) for un in set(numbers)]
+    return [y for x in sorted(lns,key=lambda ln:[-len(ln),ln]) for y in x]
+
+
 # ___________________________________________________________________________________
