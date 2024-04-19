@@ -42,8 +42,40 @@ def missing_number(items: list[int]) -> int:
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def missing_number(items: list[int]) -> int:
+    return (min(items) + max(items)) * (len(items) + 1) / 2 - sum(items)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+def missing_number(items: list[int]) -> int:
+    items=sorted(items)
+    przeskok=items[-1]-items[-2]
+    for x in items:
+        if x+przeskok not in items:
+            return x+przeskok
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def missing_number(items: list[int]) -> int:
+    return (len(items) + 1) * (min(items) + max(items)) // 2 - sum(items)
+    
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+def missing_number(items: list[int]) -> int:
+    l = list(map(int, np.linspace(min(items), max(items), len(items)+1)))
+    for x in l:
+        if x not in items:
+            return x
+
+
 # <><><><><> Uncategorized <><><><><>
+def missing_number(items: list[int]) -> int:
+
+    items.sort()
+    for i in range(len(items) - 2):
+        f, s, t = items[i: i + 3]
+        if t - s!= s - f:
+            return t - (s - f)
+
+
 # ___________________________________________________________________________________
