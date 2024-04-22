@@ -49,6 +49,18 @@ assert list(flat_list([-1, [1, [-2], 1], -1])) == [-1, 1, -2, 1, -1]
 # - depth < 10.  
 # ___________________________________________________________________________________
 # SOLUTION <>
+from collections.abc import Iterable
+
+
+def flat_list(array: list[int]) -> Iterable[int]:
+    r = []
+    for i in array:
+        if isinstance(i, list):
+            r.extend(flat_list(i))
+        else:
+            r.append(i)
+    return r
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
