@@ -41,6 +41,32 @@ assert checkio(["O.X", "XX.", "XOO"]) == "X"
 # - all(len(row) == 3 for row in game_result).
 # ___________________________________________________________________________________
 # SOLUTION <>
+def checkio(game_result: list[str]) -> str:
+    all_results = [game_result[0], 
+                   game_result[1], 
+                   game_result[2], 
+                   ''.join([game_result[0][0], game_result[1][0], game_result[2][0]]), 
+                   ''.join([game_result[0][1], game_result[1][1], game_result[2][1]]), 
+                   ''.join([game_result[0][2], game_result[1][2], game_result[2][2]]),
+                   ''.join([game_result[0][0], game_result[1][1], game_result[2][2]]),
+                   ''.join([game_result[2][0], game_result[1][1], game_result[0][2]]),
+                  ]
+    if 'XXX' in all_results:    
+        return 'X'
+    elif 'OOO' in all_results:  
+        return 'O'
+    else:
+        return 'D'
+
+print("Example:")
+print(checkio(["X.O", "XX.", "XOO"]))
+
+# These "asserts" are used for self-checking
+assert checkio(["X.O", "XX.", "XOO"]) == "X"
+assert checkio(["OO.", "XOX", "XOX"]) == "O"
+assert checkio(["OOX", "XXO", "OXX"]) == "D"
+assert checkio(["O.X", "XX.", "XOO"]) == "X"
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
