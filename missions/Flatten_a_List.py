@@ -63,8 +63,51 @@ def flat_list(array: list[int]) -> Iterable[int]:
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def flat_list(l):
+    r = []
+    def f(l):
+        for i in l:
+            r.append(i) if type(i) is int else f(i)
+    f(l)
+    return r
+    
+
 # <><><><><> Best "Creative" Solution <><><><><>
+flat_list=f=lambda d:0*d==0 and[d]or sum(map(f,d),[])#)][,)d,f(pam(mus ro]d[dna 0==d*0:d adbmal=f=tsil_talf
+#Tweet? Palindrome? Solution.
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def flat_list(array):
+    import re
+    return [int(i) for i in re.findall(r'[-]?\d+', str(array))]
+    
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+from pandas.core.common import flatten
+
+
+def flat_list(array: list) -> list:
+    """
+        What flatten does, is to use recursion over the list until the list is completely flat.
+          Since pandas is built on top of numpy, it means it's a fast solution
+    """
+    return list(flatten(array))
+
+
 # <><><><><> Uncategorized <><><><><>
+from collections.abc import Iterable
+
+
+def flat_list(array: list[int]) -> Iterable[int]:
+    res = []
+    for i in array:
+        if type(i) == list:
+            res.extend(flat_list(i))
+        else:
+            res.append(i)
+    return res
+
+
+
 # ___________________________________________________________________________________
