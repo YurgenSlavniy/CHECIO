@@ -3,7 +3,7 @@
 # Simple <>
 # encode-decode string --
 # ___________________________________________________________________________________
-#  Simple
+# Simple
 # DE English FR PL UK ZH-HANS
 
 # "I Love you soooooo much! You are the best!!"
