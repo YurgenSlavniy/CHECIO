@@ -35,6 +35,39 @@ assert long_pressed("hi, my name is...", "hi, my name is...") == False
 # - 1 <= len(text), len(typed) <= 1000.
 # ___________________________________________________________________________________
 # SOLUTION <>
+def long_pressed(text: str, typed: str) -> bool:
+        
+    if len(text.split(' ')) == len(typed.split(' ')):
+        results = []
+        for el in range(0, len(text.split(' '))):
+            if len(text.split(' ')[el]) == len(typed.split(' ')[el]) and text.split(' ')[el] == typed.split(' ')[el]:
+                results.append(False)                
+            elif len(text.split(' ')[el]) == len(typed.split(' ')[el]) and text.split(' ')[el] != typed.split(' ')[el]:
+                return False                
+            elif len(text.split(' ')[el]) != len(typed.split(' ')[el]):
+                if set(text.split(' ')[el]) == set(typed.split(' ')[el]):
+                    results.append(True)
+                else:
+                    return False
+    else:
+        return False
+    
+    if True in results:
+        return True
+    else:
+        return False
+
+
+print("Example:")
+print(long_pressed("alex", "aaleex"))
+
+
+# These "asserts" are used for self-checking
+assert long_pressed("alex", "aaleex") == True
+assert long_pressed("welcome to checkio", "weeeelcome to cccheckio") == True
+assert long_pressed("there is an error here", "there is an errorrr hereaa") == False
+assert long_pressed("hi, my name is...", "hi, my name is...") == False
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
