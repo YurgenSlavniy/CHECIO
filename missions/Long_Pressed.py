@@ -70,8 +70,73 @@ assert long_pressed("hi, my name is...", "hi, my name is...") == False
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def long_pressed(text: str, typed: str) -> bool:
+    text, typed = text.lower(), typed.lower()
+    
+    if text == typed:
+        return False
+    
+    while(text):
+        typed = typed.lstrip(text[0])
+        text = text[1:]
+
+    return not typed
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+from itertools import groupby as g, zip_longest as z
+
+def long_pressed(s, t) -> bool:
+    return s!=t and all(c==d and len(list(m))<=len(list(n))for(c,m),(d,n)in z(g(s),g(t),fillvalue=(0,0)))
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
-# <><><><><> Best "3rd party" Solution <><><><><>
+def long_pressed(text: str, typed: str) -> bool:
+    if text == typed:
+        return False
+
+    typed_lst = list(typed)
+    i = 0
+    while i < len(text):
+        try:
+            if text[i] != typed_lst[i]:
+                typed_lst.pop(i)
+            else:
+                i += 1
+        except IndexError:
+            return False
+
+    if text == ''.join(typed_lst):
+        return True
+
+    return False
+
+
 # <><><><><> Uncategorized <><><><><>
+
+from itertools import groupby
+
+
+def long_pressed(text: str, typed: str) -> bool:
+    text_keys_lengths = [(text_key, len(list(text_group))) for text_key, text_group in groupby(text)]
+    typed_keys_lengths = [(typed_key, len(list(typed_group))) for typed_key, typed_group in groupby(typed)]
+    text_keys = "".join(text_key for text_key, _ in text_keys_lengths)
+    typed_keys = "".join(typed_key for typed_key, _ in typed_keys_lengths)
+
+    if not any(
+        [
+            text == typed,
+            typed == typed_keys,
+            any(
+                text_len > typed_len
+                for (text_key, text_len), (typed_key, typed_len) in zip(
+                    text_keys_lengths, typed_keys_lengths
+                )
+            ),
+        ]
+    ):
+        return text_keys == typed_keys
+    return False
+
+
 # ___________________________________________________________________________________
