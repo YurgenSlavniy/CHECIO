@@ -33,10 +33,33 @@ assert sun_angle("12:15") == 93.75
 
 # Предусловия:
 # - 00:00 <= время <= 23:59
-
-
 # ___________________________________________________________________________________
 # SOLUTION <>
+
+from typing import Union
+from itertools import product
+import numpy as np
+
+
+def sun_angle(time: str) -> Union[float, str]:
+    
+    angles = np.arange(0, 180.25, 0.25)
+    timeline = [f"{h:02d}:{m:02d}" for h,m in product(range(6, 18), range(0, 60, 1))]
+    timeline.append('18:00')
+    dict_time_angle = dict(zip(timeline, angles))
+    
+    if time in dict_time_angle:
+        return dict_time_angle.get(time)
+    else:
+        return "I don't see the sun!"
+
+
+print("Example:")
+print(sun_angle("07:00"))
+
+assert sun_angle("07:00") == 15
+assert sun_angle("12:15") == 93.75
+
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
