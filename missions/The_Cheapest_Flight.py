@@ -58,6 +58,33 @@ assert (
 # -    оба искомых города есть в расписании.
 # ___________________________________________________________________________________
 # SOLUTION <>
+def cheapest_flight(flights: list, start: str, end: str) -> int:
+
+    graph = {}
+    for flight in flights:
+        city1, city2, price = flight
+        if city1 not in graph:
+            graph[city1] = {}
+        if city2 not in graph:
+            graph[city2] = {}
+        graph[city1][city2] = price
+        graph[city2][city1] = price
+
+    if start not in graph or end not in graph:
+        return 0
+
+    visited = {start: 0}
+    to_visit = [start]
+
+    while to_visit:
+        current_city = to_visit.pop(0)
+        for neighbor, price in graph[current_city].items():
+            total_price = visited[current_city] + price
+            if neighbor not in visited or total_price < visited[neighbor]:
+                visited[neighbor] = total_price
+                to_visit.append(neighbor)
+
+    return visited.get(end, 0)
 
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
