@@ -40,9 +40,41 @@ print(list(move_zeros([0, 1, 0, 3, 12])))
 assert list(move_zeros([0, 1, 0, 3, 12])) == [1, 3, 12, 0, 0]
 assert list(move_zeros([0])) == [0]
 
+
 # <><><><><> Best "Clear" Solution <><><><><>
+def move_zeros(items: list[int]) -> list[int]:
+    return [v for v in items if v] + [0] * items.count(0)
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+move_zeros = __import__('functools').partial(sorted, key=bool, reverse=True)
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def move_zeros(items: list[int]) -> list[int]:
+    a, b = [],[]
+    for j in items:
+        if j :
+            a.append(j)
+        else:
+            b.append(j)
+    return a + b
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy as np
+def move_zeros(items: list[int]) -> list[int]:
+    items2 = [i for i in items if i != 0]
+    
+    return np.hstack([items2,np.zeros(len(items)-len(items2), int)]).tolist()
+
+
 # <><><><><> Uncategorized <><><><><>
+def move_zeros(items: list[int]) -> Iterable[int]:
+    
+    l = [x for x in items if x!=0]
+    
+    return  l + [0]*(len(items)-len(l))
+
+
 # ___________________________________________________________________________________
