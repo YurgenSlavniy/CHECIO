@@ -35,6 +35,38 @@ assert switch_dict({"a": "b", "b": "c", "c": "a"}) == {
 # ___________________________________________________________________________________
 # SOLUTION <>
 
+def switch_dict(data: dict[str, str]) -> dict[str, str]:
+    
+    result = {}
+    
+    for k, v in data.items():
+        if v not in result:
+            result[v] =  {k}
+        else:
+            result[v].add(k)
+            
+    return result
+
+
+print("Example:")
+print(switch_dict({"rouses": "red", "car": "red", "sky": "blue"}))
+
+# These "asserts" are used for self-checking
+assert switch_dict({"rouses": "red", "car": "red", "sky": "blue"}) == {
+    "red": {"car", "rouses"},
+    "blue": {"sky"},
+}
+assert switch_dict({"1": "one", "2": "two", "3": "one", "4": "two"}) == {
+    "one": {"1", "3"},
+    "two": {"2", "4"},
+}
+assert switch_dict({"a": "b", "b": "c", "c": "a"}) == {
+    "b": {"a"},
+    "c": {"b"},
+    "a": {"c"},
+}
+
+
 # <><><><><> Best "Clear" Solution <><><><><>
 # <><><><><> Best "Creative" Solution <><><><><>
 # <><><><><> Best "Speedy" Solution <><><><><>
