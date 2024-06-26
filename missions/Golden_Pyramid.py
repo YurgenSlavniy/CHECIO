@@ -197,8 +197,93 @@ print("The mission is done! Click 'Check Solution' to earn rewards!")
 
 
 # <><><><><> Best "Clear" Solution <><><><><>
+def count_gold(pyramid):
+    """
+    Return max possible sum in a path from top to bottom
+    """
+    
+    '''
+    
+    ===============
+    Golden Pyramid
+    ===============
+    
+    Approach
+    --------
+    
+    This algorithm is a greedy approach to solving the problem.  
+    Instead of working forward through the pyramid, we will work backwards.
+    The idea is to start in the second to bottom row and select maxium of the
+    the next two possible values from the current node and add that value to 
+    the current node.
+    
+    After that we continue to roll up the rows and repeat the process for each
+    node in that row.  When we reach the starting node we will have the sum
+    of the maximum path.  
+    
+    *Note*: we are not finding the best path; we are only finding the maxium sum 
+    from that path.  
+
+    Code
+    ----
+    
+    I want a mutable copy of the pyramid to work with.  
+    Get the number of rows from the **len** function.  
+    The last row is not in play to start hence **rows-1**
+    Also we're working backwards so use the **reversed** function.
+    Need to itertate over each item in the row. Note the plus 1, range(0) 
+    returns an empty list.
+    The possible nodes to examine are 1) the on directly below i+1,j
+    and the one below and to the right i+1, j+1.  We use the **max** 
+    function to select the largest one and then add it to the current
+    node.  
+    
+    '''
+    py = [list(i) for i in pyramid]
+    for i in reversed(range(len(py)-1)):   
+        for j in range(i+1):
+            py[i][j] +=(max(py[i+1][j], py[i+1][j+1]))
+
+    return py[0][0]
+
+
 # <><><><><> Best "Creative" Solution <><><><><>
+count_gold=lambda p:__import__("functools").reduce(lambda D,r:[x+max(D[j],D[j+1])
+for j,x in enumerate(r)],p[-2::-1],list(p[-1]))[0]
+
+
 # <><><><><> Best "Speedy" Solution <><><><><>
+def count_gold(pyramid):
+    p = tuple(map(list, pyramid))
+    for i in reversed(range(len(p))):
+        for j in range(i): p[i-1][j] += max(p[i][j:j+2])
+    return p[0][0]
+
+
 # <><><><><> Best "3rd party" Solution <><><><><>
+import numpy
+def count_gold(pyramid):
+    l = len(pyramid)-1
+    zv = [list(format(x, '0'+str(l)+'b')) for x in range(2**l)]
+    im = [[0]+list(numpy.cumsum([int(x) for x in l])) for l in zv ]
+    ms = max([sum([x[i] for i,x in zip(iv,pyramid)]) for iv in im])
+    return ms
+
+
 # <><><><><> Uncategorized <><><><><>
+def count_gold(pyramid):
+    """
+    Return max possible sum in a path from top to bottom
+    """
+    routes = [(0 ,pyramid[0][0])] # make list of current_index, sum_gold pairs
+    for level in pyramid[1:]:
+        newroutes = []
+        for current_index, sum_gold in routes:
+            newroutes.append((current_index, sum_gold + level[current_index]))
+            newroutes.append((current_index+1, sum_gold + level[current_index+1]))
+        routes = newroutes
+            
+    return max(routes, key = lambda route: route[1])[1]
+
+
 # ___________________________________________________________________________________
